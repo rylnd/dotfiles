@@ -45,6 +45,9 @@ jdpace='Jared Pace'
 ## END CONFIGURATION
 #######################################################################
 
+# quit quietly
+[[ $1 == '-q' ]] && return 0
+
 print_config() {
   local name_var email_var
   [ -n "$GIT_AUTHOR_NAME" ] && name_var="$GIT_AUTHOR_NAME" || name_var=`git config user.name`
