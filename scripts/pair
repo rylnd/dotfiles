@@ -14,31 +14,10 @@
 #
 # Author: Ryland Herrick
 
-
 pair() {
   #### CONFIGURATION #####################################################
   PAIR_EMAIL_USERNAME='dev'
   PAIR_EMAIL_DOMAIN='bendyworks.com'
-
-  # Bendyworkers:
-  begriffs='Joe Nelson'
-  bendycode='Stephen Anderson'
-  bigtiger='Jim Remsik'
-  devn='Devin Walters'
-  jaym3s='Jaymes Waters'
-  listrophy='Bradley Grzesiak'
-  mathias='Matt Gauger'
-  randland='Nick Karpenske'
-  ryalnd='Ryland Herrick'
-  twopoint718='Chris Wilson'
-  whblondeau='Bill Blondeau'
-
-  # Other:
-  jcarley='Jeff Carley'
-  angelic='Angel N. Sciortino'
-  glynnis='Glynnis Ritchie'
-  jdpace='Jared Pace'
-  m5rk='Mark McEahern'
   #### END CONFIGURATION ##################################################
 
   set_session_vars() {
@@ -73,7 +52,8 @@ pair() {
 
   for user in ${usernames[@]}
   do
-    eval name=\$$user
+    name=`curl -is https://api.github.com/users/$user | grep -Po '"name":.*"' | cut -d \" -f 4`
+    eval $user=\$$name
     if [ -z "$name" ]; then
       echo "Couldn't find author name for Github username: $user"
       return 1
