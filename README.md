@@ -8,7 +8,8 @@ A collection of scripts and commands that I use every day.
 Configures the git author/email for multiple developers when pair programming
 
 #### Setup
-First, you'll probably want the pair script added to your PATH.  In something like `~/.bash_login` add:
+First, for simplicity, you'll probably want the pair script added onto your PATH. If you have a `~/bin`, you can throw it in there.
+Otherwise, in something like `~/.bash_login` add:
 ```bash
 export PATH="$PATH:<path_to_pair_script>"
 ```
@@ -51,3 +52,6 @@ And check your current configuration:
 ```bash
 $ pair                  # Lists the current author/email
 ```
+
+## Contributing
+Pull requests are always welcome.
