@@ -45,6 +45,7 @@ pair() {
   #### END CONFIGURATION ##################################################
 
   set_session_vars() {
+    unset pair_name pair_email names
     [ ! -f "$HOME/.pairrc" ] || source "$HOME/.pairrc"
   }
 
