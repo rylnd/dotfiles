@@ -59,12 +59,6 @@ pair() {
     printf "user.email = %s\n" "$email_var"
   }
 
-  git=`git status 2> /dev/null`
-  if [ $? != 0 ]; then
-    echo "This doesn't look like a git repository."
-    return 1
-  fi
-
   case "$1" in
   -u) echo "unset GIT_AUTHOR_NAME GIT_AUTHOR_EMAIL" > "$HOME/.pairrc"
       print_config
