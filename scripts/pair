@@ -65,11 +65,15 @@ pair() {
     return 1
   fi
 
-  if [[ $1 == '-u' ]]; then
-    echo "unset GIT_AUTHOR_NAME GIT_AUTHOR_EMAIL" > "$HOME/.pairrc"
-    print_config
-    return 0
-  fi
+  case "$1" in
+  -u) echo "unset GIT_AUTHOR_NAME GIT_AUTHOR_EMAIL" > "$HOME/.pairrc"
+      print_config
+      return 0
+      ;;
+  -q) set_session_vars
+      return 0
+      ;;
+  esac
 
   usernames=`printf "%s\n" $@ | tr A-Z a-z | sort`
 
