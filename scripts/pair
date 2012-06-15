@@ -14,10 +14,9 @@
 #
 # Author: Ryland Herrick
 
-#######################################################################
-## CONFIGURATION
 
 pair() {
+  #### CONFIGURATION #####################################################
   PAIR_EMAIL_USERNAME='dev'
   PAIR_EMAIL_DOMAIN='bendyworks.com'
 
@@ -43,9 +42,7 @@ pair() {
 
   # Relevance folks:
   jdpace='Jared Pace'
-
-  ## END CONFIGURATION
-  #######################################################################
+  #### END CONFIGURATION ##################################################
 
   set_session_vars() {
     [ ! -f "$HOME/.pairrc" ] || source "$HOME/.pairrc"
