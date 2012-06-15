@@ -47,8 +47,12 @@ pair() {
   ## END CONFIGURATION
   #######################################################################
 
-  print_config() {
+  set_session_vars() {
     [ ! -f "$HOME/.pairrc" ] || source "$HOME/.pairrc"
+  }
+
+  print_config() {
+    set_session_vars
     [ -n "$GIT_AUTHOR_NAME" ] && name_var="$GIT_AUTHOR_NAME" || name_var=`git config user.name`
     [ -n "$GIT_AUTHOR_EMAIL" ] && email_var="$GIT_AUTHOR_EMAIL" || email_var=`git config user.email`
     printf "user.name  = %s\n" "$name_var"
