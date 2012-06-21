@@ -54,8 +54,9 @@ pair() {
   do
     name=`curl -is https://api.github.com/users/$user | grep -Po '"name":.*"' | cut -d \" -f 4`
     eval $user=\$$name
-    if [ -z "$name" ]; then
-      echo "Couldn't find author name for Github username: $user"
+
+    if [[ -z "$name" ]]; then
+      echo "Couldn't find author name for Github username: $user\nP.S. Are you online?"
       return 1
     fi
     names=(${names[@]} \$$user)
