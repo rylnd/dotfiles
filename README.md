@@ -7,7 +7,13 @@ A collection of scripts and commands that I use every day.
 
 Configures the git author/email for multiple developers when pair programming
 
-#### Setup
+#### Setup (Automatic)
+Paste the following into your command line:
+```bash
+curl -L# https://raw.github.com/ryalnd/dotfiles/master/pair_setup | bash
+```
+
+#### Setup (Manual)
 Define the pair script in your shell by adding the following to a shell startup file (`~/.bash_profile`, `~/.bashrc`, etc.):
 ```bash
 # defines the pair function

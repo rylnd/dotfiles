@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+get_script(){
+  curl -s https://raw.github.com/ryalnd/dotfiles/master/scripts/pair > $HOME/.pair
+}
+
+modify_dotfile(){
+  echo '
+# define the pair function
+source "$HOME/.pair"
+# quietly set the previous pairing state
+pair -q' >> $HOME/.bash_profile
+}
+
+setup_complete(){
+  echo "pair is now set up!"
+  echo 'Please re-source your .bash_profile or start a new session to use pair.'
+}
+
+get_script && modify_dotfile && setup_complete
