@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Configures the local git author/email to a list of developers when pair programming
 #
