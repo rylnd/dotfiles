@@ -3,7 +3,7 @@ A collection of scripts and commands that I use every day.
 
 ##Contents
 
-###scripts/pair
+#scripts/pair
 
 Configures the git author/email for multiple developers when pair programming
 
