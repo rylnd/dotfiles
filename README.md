@@ -10,7 +10,7 @@ Configures the git author/email for multiple developers when pair programming
 #### Setup (Automatic)
 Paste the following into your command line:
 ```bash
-curl -L# https://raw.github.com/ryalnd/dotfiles/master/pair_setup | bash
+curl -s https://raw.github.com/ryalnd/dotfiles/master/install_pair | bash
 ```
 
 #### Setup (Manual)
