@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+function assert {
+  if [[ $# -lt 2 ]]; then
+    echo "Usage: $0 OPERAND [ARGS...]"
+  fi
+
+  case $1 in
+
+  == | equal )
+    if [[ ! "$2" = "$3" ]]; then
+      echo "FAIL: expected [$2] to equal [$3]"
+    else
+      echo -n '.'
+    fi
+  ;;
+
+  =~ | match )
+    if [[ ! "$2" =~ "$3" ]]; then
+      echo "FAIL: expected [$2] to match [$3]"
+    else
+      echo -n '.'
+    fi
+  ;;
+
+  blank )
+    if [[ -n "$2" ]]; then
+      echo "FAIL: expected [$2] to be blank"
+    else
+      echo -n '.'
+    fi
+  ;;
+
+  *) echo "Unknown operand [$1]"; exit 1
+
+  esac
+}
