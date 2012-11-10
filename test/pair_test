@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+## SETUP
+  here="`dirname $0`"
+
+  source $here/test_helper
+  source $here/../scripts/pair
+
+
+#1 should set $GIT_AUTHOR_NAME
+pair ryalnd &> /dev/null
+
+assert equal "$GIT_AUTHOR_NAME" "Ryland Herrick"
+
+#2 should set $GIT_AUTHOR_EMAIL
+pair ryalnd &> /dev/null
+
+assert match "$GIT_AUTHOR_EMAIL" "ryalnd"
+
+#3 should unset $GIT_AUTHOR_NAME
+pair -u &> /dev/null
+
+assert blank "$GIT_AUTHOR_NAME"
+
+#4 should unset $GIT_AUTHOR_EMAIL
+pair -u &> /dev/null
+
+assert blank "$GIT_AUTHOR_EMAIL"
+
+#5 should use dev@bendyworks.com in the email
+pair ryalnd &> /dev/null
+
+assert match "$GIT_AUTHOR_EMAIL" "dev.*bendyworks\.com"
+
+echo
