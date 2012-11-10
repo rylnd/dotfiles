@@ -35,3 +35,27 @@ function assert {
 
   esac
 }
+
+### TEST SUITE ###
+echo "$(
+
+  ## SETUP
+    source ./pair
+    pair ryalnd &> /dev/null
+
+  #1 should set $GIT_AUTHOR_NAME
+    pair -q ryalnd
+    assert equal "$GIT_AUTHOR_NAME" "Ryland Herrick"
+
+  #2 should set $GIT_AUTHOR_EMAIL
+    assert match "$GIT_AUTHOR_EMAIL" "ryalnd"
+
+  #3 should unset $GIT_AUTHOR_NAME
+    pair -u &> /dev/null
+    assert blank "$GIT_AUTHOR_NAME"
+
+  #4 should unset $GIT_AUTHOR_EMAIL
+    pair -u &> /dev/null
+    assert blank "$GIT_AUTHOR_EMAIL"
+
+)"
