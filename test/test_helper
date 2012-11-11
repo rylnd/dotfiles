@@ -25,9 +25,13 @@ function assert {
 }
 
 function print_result {
+  local red="\033[0;31m"
+  local green="\033[0;32m"
+  local norm="\033[0m"
+
   if eval $1; then
-    echo $2
+    echo -e $red$2$norm
   else
-    echo -n '.'
+    echo -ne $green.$norm
   fi
 }
