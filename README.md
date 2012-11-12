@@ -51,5 +51,9 @@ And check your current configuration:
 $ pair                  # Lists the current author/email
 ```
 
+# test/
+
+Unit tests to document the behavior of these scripts.
+
 ## Contributing
 Pull requests are always welcome.
