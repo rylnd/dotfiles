@@ -12,7 +12,7 @@ function assert {
   ;;
 
   =~ | match )
-    print_result "[[ ! '$2' =~ ${3} ]]" "FAIL: expected [$2] to match [$3]"
+    print_result "[[ ! '$2' =~ $3 ]]" "FAIL: expected [$2] to match [$3]"
   ;;
 
   blank )
