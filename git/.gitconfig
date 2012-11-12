@@ -1,0 +1,45 @@
+[alias]
+	st = status
+	ci = commit
+	co = checkout
+	cp = cherry-pick
+	fixup = !sh -c 'git commit -m \"fixup! $(git log -1 --format='\\''%s'\\'' $@)\"' -
+	squash = !sh -c 'git commit -m \"squash! $(git log -1 --format='\\''%s'\\'' $@)\"' -
+	ri = rebase --interactive
+	br = branch
+	pruneremote = remote prune origin
+	tree = log --graph --oneline --decorate --color --all
+	tr = log --graph --oneline --decorate --color
+	unpushed = !"PROJ_BRANCH=$(git symbolic-ref HEAD | sed 's|refs/heads/||') && git log origin/$PROJ_BRANCH..HEAD"
+	unpulled = !"PROJ_BRANCH=$(git symbolic-ref HEAD | sed 's|refs/heads/||') && git fetch && git log HEAD..origin/$PROJ_BRANCH"
+	lol = log --oneline --graph --decorate
+	sta = status -s -b
+	df = diff -w
+	me = merge
+	fixm = commit --amen
+	reauth = commit --amen --reset-author -CHEAD
+	redo = commit --amen -CHEAD
+	merge-clean = !sh -c '(git merge $@ > /tmp/git-output && cat /tmp/git-output) || (git merge --abort && echo \"Merge aborted.\" && exit 1) ' -
+[branch]
+	autosetuprebase = always
+[color]
+	ui = auto
+[core]
+	excludesfile = ~/.cvsignore
+	editor = vim
+	whitespace = warn
+[help]
+	autocorrect = 10
+[interactive]
+	singlekey = false
+[merge]
+	summary = true
+[push]
+	default = tracking
+[rebase]
+	autosquash = true
+[user]
+	name = Ryland Herrick
+	email = ryland@bendyworks.com
+[advice]
+	statusHints = false

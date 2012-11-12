@@ -50,6 +50,9 @@ And check your current configuration:
 ```bash
 $ pair                  # Lists the current author/email
 ```
+# git/
+
+Configuration and aliases related to git.
 
 # test/
 
