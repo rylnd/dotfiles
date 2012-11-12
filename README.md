@@ -42,7 +42,7 @@ $ pair -u               # Unsets the author/email
 You can also set more than two users:
 
 ```bash
-$ pair bigtiger devn mathias   # Sets the author to 'Jim Remsik, Devin Walters and Matt Gauger'
+$ pair bigtiger devn mathias   # Sets the author to 'Jim Remsik, Devin Walters, and Matt Gauger'
 ```
 
 And check your current configuration:
