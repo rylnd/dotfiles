@@ -1,10 +1,7 @@
 # ryalnd/dotfiles
 A collection of scripts and commands that I use every day.
 
-##Contents
-
-#scripts/pair
-
+##scripts/pair
 Configures the git author/email for multiple developers when pair programming
 
 #### Setup (Automatic)
@@ -50,15 +47,13 @@ And check your current configuration:
 ```bash
 $ pair                  # Lists the current author/email
 ```
-# git/
-
-## .gitconfig
+## git/.gitconfig
 Enough said.
 
-## aliases
+## git/aliases
 Bash aliases related to git. Saves me from typing some characters.
 
-# test/
+## test/
 Unit tests to document the behavior of these scripts.
 
 # Contributing
