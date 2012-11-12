@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-function assert {
+assert() {
   if [[ $# -lt 2 ]]; then
     echo "Usage: $0 OPERAND [ARGS...]"
   fi
@@ -24,7 +24,7 @@ function assert {
   esac
 }
 
-function print_result {
+print_result() {
   local red="\033[0;31m"
   local green="\033[0;32m"
   local norm="\033[0m"
