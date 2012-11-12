@@ -1,0 +1,25 @@
+alias gap='git add -p'
+alias gbr='git branch'
+alias gcl='git clone'
+alias gco='git checkout'
+alias gd='git diff'
+alias gdc='git diff --cached'
+alias gdel='git add -u'
+alias gdf='clear; git diff -a -w'
+alias gf='git flow'
+alias gfull='clear; git status; git add .; git add -u; echo "****************"; git status; git ci -am'
+alias gjam="git push -f"
+alias gl='git pull'
+alias glog='git log'
+alias glp='git log -p'
+alias gme='git merge'
+alias gmv='git mv'
+alias gp='git push'
+alias gpull='git pull'
+alias gpush='git push'
+alias grm='git rm'
+alias gst='git status'
+alias gstack="gadd; gdel; git status; git redo;"
+alias gtrim="sed -i '' -e 's/[[:space:]]*$//g'"
+
+alias gitshipit="git add -A .; git commit -m 'SHIP IT'; git push -f"
