@@ -52,11 +52,14 @@ $ pair                  # Lists the current author/email
 ```
 # git/
 
-Configuration and aliases related to git.
+## .gitconfig
+Enough said.
+
+## aliases
+Bash aliases related to git. Saves me from typing some characters.
 
 # test/
-
 Unit tests to document the behavior of these scripts.
 
-## Contributing
+# Contributing
 Pull requests are always welcome.
