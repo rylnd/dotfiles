@@ -1,6 +1,6 @@
-#!/usr/bin/env bash
-
 # Configures the local git author/email to a list of developers when pair programming
+#
+# Installation: Source this file to define the pair function in your session.
 #
 # Usage: pair ryalnd mathias (Sets the author to 'Matt Gauger and Ryland Herrick')
 #        pair                (Lists current git author/email)

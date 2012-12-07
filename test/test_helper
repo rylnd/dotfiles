@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 assert() {
   if [[ $# -lt 2 ]]; then
     echo "Usage: $0 OPERAND [ARGS...]"
