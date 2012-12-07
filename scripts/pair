@@ -69,7 +69,7 @@ pair() {
 
   usernames=(`printf "%s\n" $@ | tr A-Z a-z | sort`)
 
-  if [[ ${#usernames} == 0 ]]; then
+  if [[ -z "$usernames" ]]; then
     print_config
     return 0
   fi
