@@ -67,7 +67,7 @@ pair() {
       ;;
   esac
 
-  usernames=`printf "%s\n" $@ | tr A-Z a-z | sort`
+  usernames=(`printf "%s\n" $@ | tr A-Z a-z | sort`)
 
   if [[ ${#usernames} == 0 ]]; then
     print_config
