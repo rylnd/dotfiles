@@ -33,15 +33,12 @@ pair() {
   twopoint718='Chris Wilson'
   whblondeau='Bill Blondeau'
 
-  # Getty folks:
+  # Other:
   jcarley='Jeff Carley'
-
-  # Murfie folks:
   angelic='Angel N. Sciortino'
   glynnis='Glynnis Ritchie'
-
-  # Relevance folks:
   jdpace='Jared Pace'
+  m5rk='Mark McEahern'
   #### END CONFIGURATION ##################################################
 
   set_session_vars() {
