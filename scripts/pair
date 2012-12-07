@@ -76,7 +76,7 @@ pair() {
 
   for user in $usernames
   do
-    name=${!user}
+    eval name=\$$user
     if [ -z "$name" ]; then
       echo "Couldn't find author name for Github username: $user"
       return 1
