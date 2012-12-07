@@ -74,14 +74,14 @@ pair() {
     return 0
   fi
 
-  for user in $usernames
+  for user in ${usernames[@]}
   do
     eval name=\$$user
     if [ -z "$name" ]; then
       echo "Couldn't find author name for Github username: $user"
       return 1
     fi
-    names=($names $name)
+    names=(${names[@]} \$$user)
     pair_email=$pair_email+$user
   done
 
