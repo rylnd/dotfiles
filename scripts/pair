@@ -81,7 +81,7 @@ pair() {
       echo "Couldn't find author name for Github username: $user"
       return 1
     fi
-    names[${#names[@]}]=$name
+    names=($names $name)
     pair_email=$pair_email+$user
   done
 
