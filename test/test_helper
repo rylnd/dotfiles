@@ -5,17 +5,17 @@ assert() {
     echo "Usage: $0 OPERAND [ARGS...]"
   fi
 
-  case $1 in
+  case "x$1" in
 
-  == | equal )
+  x== | xequal )
     print_result "[[ ! '$2' = '$3' ]]" "FAIL: expected [$2] to equal [$3]"
   ;;
 
-  =~ | match )
+  x=~ | xmatch )
     print_result "[[ ! '$2' =~ $3 ]]" "FAIL: expected [$2] to match [$3]"
   ;;
 
-  blank )
+  xblank )
     print_result "[[ -n '$2' ]]" "FAIL: expected [$2] to be blank"
   ;;
 
