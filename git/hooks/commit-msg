@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# Ensures that WIP commits are ignored by Travis CI
+if grep -q "WIP" "$1" && ! grep -q "\[ci skip\]" "$1" ; then
+  echo -e "\n[ci skip]" >> "$1"
+fi
