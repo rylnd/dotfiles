@@ -56,6 +56,12 @@ it "correctly lists more than two authors WITH AN OXFORD COMMA"
   pair rylnd bendycode bigtiger &> /dev/null
   assert equal "$GIT_AUTHOR_NAME" "Stephen Anderson, Jim Remsik, and Ryland Herrick"
 
+it ".pairrc doesn't rely on variables defined in the function"
+  pair rylnd &> /dev/null
+  source $HOME/.pairrc
+  assert equal "$GIT_AUTHOR_NAME" "Ryland Herrick"
+  assert match "$GIT_AUTHOR_EMAIL" "rylnd"
+
 ## TEARDOWN
   pair -u &> /dev/null
   echo
