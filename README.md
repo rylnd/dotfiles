@@ -1,4 +1,4 @@
-# ryalnd/dotfiles
+# rylnd/dotfiles
 A collection of scripts and commands that I use every day.
 
 ##scripts/pair
@@ -7,7 +7,7 @@ Configures the git author/email for multiple developers when pair programming
 #### Setup (Automatic)
 Paste the following into your command line:
 ```bash
-curl -s https://raw.github.com/ryalnd/dotfiles/master/install_pair | bash
+curl -s https://raw.github.com/rylnd/dotfiles/master/install_pair | bash
 ```
 
 #### Setup (Manual)
@@ -32,8 +32,8 @@ alias unpair='pair -u'
 #### Usage:
 
 ```bash
-$ pair ryalnd mathias   # Sets the author to 'Matt Gauger and Ryland Herrick'
-$ pair -u               # Unsets the author/email
+$ pair rylnd mathias   # Sets the author to 'Matt Gauger and Ryland Herrick'
+$ pair -u              # Unsets the author/email
 ```
 
 You can also set more than two users:

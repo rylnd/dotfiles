@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 get_script(){
-  curl -s https://raw.github.com/ryalnd/dotfiles/master/scripts/pair > $HOME/.pair
+  curl -s https://raw.github.com/rylnd/dotfiles/master/scripts/pair > $HOME/.pair
 }
 
 modify_dotfile(){

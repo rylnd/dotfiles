@@ -2,9 +2,9 @@
 #
 # Installation: Source this file to define the pair function in your session.
 #
-# Usage: pair ryalnd mathias (Sets the author to 'Matt Gauger and Ryland Herrick')
-#        pair                (Lists current git author/email)
-#        pair -u             (Unsets the author/email)
+# Usage: pair rylnd mathias (Sets the author to 'Matt Gauger and Ryland Herrick')
+#        pair               (Lists current git author/email)
+#        pair -u            (Unsets the author/email)
 #
 # You may also set more than two users in the pair:
 #        pair bigtiger devn mathias (Sets the author to 'Jim Remsik, Devin Walters and Matt Gauger')
