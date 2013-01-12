@@ -6,6 +6,14 @@
   source $here/test_helper
   source $here/../scripts/pair
 
+example="doesn't leak variables outside the function"
+(set -o posix; set) >/tmp/vars.before
+pair rylnd &> /dev/null
+(set -o posix; set) >/tmp/vars.after
+extra_vars=`diff /tmp/vars.{before,after} --ignore-matching-lines=GIT_AUTHOR`
+rm /tmp/vars.{before,after}
+assert blank "$extra_vars"
+
 example="sets \$GIT_AUTHOR_NAME"
 pair rylnd &> /dev/null
 assert equal "$GIT_AUTHOR_NAME" "Ryland Herrick"

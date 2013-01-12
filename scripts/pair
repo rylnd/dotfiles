@@ -16,42 +16,43 @@
 
 
 pair() {
+  local name names email pair_name pair_email user usernames
+
   #### CONFIGURATION #####################################################
-  PAIR_EMAIL_USERNAME='dev'
-  PAIR_EMAIL_DOMAIN='bendyworks.com'
+  local PAIR_EMAIL_USERNAME='dev'
+  local PAIR_EMAIL_DOMAIN='bendyworks.com'
 
   # Bendyworkers:
-  begriffs='Joe Nelson'
-  bendycode='Stephen Anderson'
-  bigtiger='Jim Remsik'
-  devn='Devin Walters'
-  jaym3s='Jaymes Waters'
-  listrophy='Bradley Grzesiak'
-  mathias='Matt Gauger'
-  randland='Nick Karpenske'
-  rylnd='Ryland Herrick'
-  twopoint718='Chris Wilson'
-  whblondeau='Bill Blondeau'
+  local begriffs='Joe Nelson'
+  local bendycode='Stephen Anderson'
+  local bigtiger='Jim Remsik'
+  local devn='Devin Walters'
+  local jaym3s='Jaymes Waters'
+  local listrophy='Bradley Grzesiak'
+  local mathias='Matt Gauger'
+  local randland='Nick Karpenske'
+  local rylnd='Ryland Herrick'
+  local twopoint718='Chris Wilson'
+  local whblondeau='Bill Blondeau'
 
   # Other:
-  jcarley='Jeff Carley'
-  angelic='Angel N. Sciortino'
-  glynnis='Glynnis Ritchie'
-  jdpace='Jared Pace'
-  m5rk='Mark McEahern'
+  local jcarley='Jeff Carley'
+  local angelic='Angel N. Sciortino'
+  local glynnis='Glynnis Ritchie'
+  local jdpace='Jared Pace'
+  local m5rk='Mark McEahern'
   #### END CONFIGURATION ##################################################
 
   set_session_vars() {
-    unset pair_name pair_email names
     [[ ! -f "$HOME/.pairrc" ]] || source "$HOME/.pairrc"
   }
 
   print_config() {
     set_session_vars
-    [[ -n "$GIT_AUTHOR_NAME" ]] && name_var="$GIT_AUTHOR_NAME" || name_var=`git config user.name`
-    [[ -n "$GIT_AUTHOR_EMAIL" ]] && email_var="$GIT_AUTHOR_EMAIL" || email_var=`git config user.email`
-    printf "user.name  = %s\n" "$name_var"
-    printf "user.email = %s\n" "$email_var"
+    [[ -n "$GIT_AUTHOR_NAME" ]] && name="$GIT_AUTHOR_NAME" || name=`git config user.name`
+    [[ -n "$GIT_AUTHOR_EMAIL" ]] && email="$GIT_AUTHOR_EMAIL" || email=`git config user.email`
+    printf "user.name  = %s\n" "$name"
+    printf "user.email = %s\n" "$email"
   }
 
   case "x$1" in
@@ -75,7 +76,7 @@ pair() {
   do
     eval name=\$$user
     if [[ -z "$name" ]]; then
-      echo "Couldn't find author name for Github username: $user"
+      echo "Couldn't find author name for GitHub username: $user"
       return 1
     fi
     names=(${names[@]} \$$user)
