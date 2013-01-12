@@ -28,7 +28,7 @@ print_result() {
   local norm="\033[0m"
 
   if eval $1; then
-    echo -e $red$2$norm
+    echo -e "\n$red$example\n$2$norm"
   else
     echo -ne $green.$norm
   fi
