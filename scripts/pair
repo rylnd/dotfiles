@@ -57,7 +57,9 @@ pair() {
     if [[ -z "$name" ]]; then
       echo "Couldn't find author name for Github username: $user."
       echo "Are you online, and does their Github profile have a name?"
-      return 1
+      echo "Loading from $HOME/.pairs instead"
+      [[ ! -f "$HOME/.pairs" ]] || source "$HOME/.pairs"
+      eval name=\$$user
     fi
 
     eval $user='$name'
