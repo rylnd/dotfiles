@@ -1,3 +1,7 @@
+it() {
+  description="$1"
+}
+
 assert() {
   if [[ $# -lt 2 ]]; then
     echo "Usage: $0 OPERAND [ARGS...]"
@@ -6,15 +10,15 @@ assert() {
   case "x$1" in
 
   x== | xequal )
-    print_result "[[ ! '$2' = '$3' ]]" "FAIL: expected [$2] to equal [$3]"
+    print_result "[[ ! '$2' = '$3' ]]" "expected [$2] to equal [$3]"
   ;;
 
   x=~ | xmatch )
-    print_result "[[ ! '$2' =~ $3 ]]" "FAIL: expected [$2] to match [$3]"
+    print_result "[[ ! '$2' =~ $3 ]]" "expected [$2] to match [$3]"
   ;;
 
   xblank )
-    print_result "[[ -n '$2' ]]" "FAIL: expected [$2] to be blank"
+    print_result "[[ -n '$2' ]]" "expected [$2] to be blank"
   ;;
 
   *) echo "Unknown operand [$1]"; exit 1
@@ -28,7 +32,7 @@ print_result() {
   local norm="\033[0m"
 
   if eval $1; then
-    echo -e "\n$red$example\n$2$norm"
+    echo -e "\n$red$description\n$2$norm"
   else
     echo -ne $green.$norm
   fi
