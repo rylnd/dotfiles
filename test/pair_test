@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 ## SETUP
-  here="`dirname $0`"
+  here="$(dirname $0)"
 
   source $here/test_helper
   source $here/../scripts/pair
@@ -10,7 +10,7 @@ it "doesn't leak variables outside the function"
   (set -o posix; set) >/tmp/vars.before
   pair rylnd &> /dev/null
   (set -o posix; set) >/tmp/vars.after
-  extra_vars=`diff /tmp/vars.{before,after} --ignore-matching-lines=GIT_AUTHOR`
+  extra_vars=$(diff /tmp/vars.{before,after} --ignore-matching-lines=GIT_AUTHOR)
   rm /tmp/vars.{before,after}
   assert blank "$extra_vars"
 
@@ -75,7 +75,7 @@ it ".pairrc doesn't rely on variables defined in the function"
   assert match "$GIT_AUTHOR_EMAIL" "rylnd"
 
 it "alerts if not all authors are found"
-  message=`pair rylnd _bad_user_`
+  message=$(pair rylnd _bad_user_)
   assert equal "$message" "Author name not found for GitHub username: _bad_user_"
 
 it "fails if not all authors are found"
