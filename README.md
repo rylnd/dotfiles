@@ -1,4 +1,4 @@
-# rylnd/dotfiles
+# rylnd/dotfiles [![Build Status](https://travis-ci.org/rylnd/dotfiles.png)](https://travis-ci.org/rylnd/dotfiles)
 A collection of scripts and commands that I use every day.
 
 ##scripts/pair
