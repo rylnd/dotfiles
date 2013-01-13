@@ -50,8 +50,8 @@ pair() {
     set_session_vars
     [[ -n "$GIT_AUTHOR_NAME" ]] && name="$GIT_AUTHOR_NAME" || name=$(git config user.name)
     [[ -n "$GIT_AUTHOR_EMAIL" ]] && email="$GIT_AUTHOR_EMAIL" || email=$(git config user.email)
-    printf "user.name  = %s\n" "$name"
-    printf "user.email = %s\n" "$email"
+    echo "user.name  = $name"
+    echo "user.email = $email"
   }
 
   case "x$1" in
