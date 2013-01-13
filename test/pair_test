@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 ## SETUP
-  here="$(dirname $0)"
+  here=$(dirname $0)
 
   source $here/test_helper
   source $here/../scripts/pair

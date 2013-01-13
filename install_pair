@@ -1,20 +1,34 @@
 #!/usr/bin/env bash
 
-get_script(){
+get_script() {
   curl -s https://raw.github.com/rylnd/dotfiles/master/scripts/pair > $HOME/.pair
 }
 
-modify_dotfile(){
-  echo '
-# define the pair function
-source "$HOME/.pair"
-# quietly set the previous pairing state
-pair -q' >> $HOME/.bash_profile
+pair_hook() {
+  echo
+  echo '# define the pair function'
+  echo 'source "$HOME/.pair"'
+  echo '# quietly set the previous pairing state'
+  echo 'pair -q'
 }
 
-setup_complete(){
-  echo "pair is now set up!"
-  echo 'Please source $HOME/.pair or start a new session to use pair.'
+modify_dotfile() {
+  if ! grep -q "define the pair function" "$HOME/.bash_profile" ; then
+    pair_hook >> $HOME/.bash_profile
+  else
+    echo
+    echo "*** Skipping addition of pair hook. ***"
+    echo "Previous installation found in $HOME/.bash_profile"
+    echo "Please ensure something like the following is there:"
+    echo "--------------------------------------"
+    pair_hook
+    echo "--------------------------------------"
+  fi
+}
+
+setup_complete() {
+  echo "*** pair is now set up! ***"
+  echo "Please source $HOME/.pair or start a new session to use pair."
 }
 
 get_script && modify_dotfile && setup_complete

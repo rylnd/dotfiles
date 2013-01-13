@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+## SETUP
+  here=$(dirname $0)
+  source $here/test_helper
+
+  stub_script() {
+    sed '$d' $here/../install_pair > /tmp/install_pair
+    source /tmp/install_pair
+  }
+
+  backup_files() {
+    if [[ -f $HOME/.bash_profile ]]; then profile=true; fi
+    if [[ -f $HOME/.pair ]]; then pair=true; fi
+
+    $pair && mv $HOME/.pair{,.bak}
+    $profile && mv $HOME/.bash_profile{,.bak}
+    touch $HOME/.bash_profile
+  }
+
+  backup_files
+  stub_script
+
+  pair_hook="$(pair_hook)"
+
+it "adds to .bash_profile"
+  modify_dotfile &> /dev/null
+  added_lines="$(comm -13 $HOME/.bash_profile{.bak,})"
+  assert equal "$added_lines" "$pair_hook"
+
+it "is idempotent"
+  modify_dotfile &> /dev/null
+  added_lines="$(comm -13 $HOME/.bash_profile{.bak,})"
+  assert equal "$added_lines" "$pair_hook"
+
+## TEARDOWN
+  $profile && mv $HOME/.bash_profile{.bak,}
+  $pair && mv $HOME/.pair{.bak,}
+  echo
+  [[ -z "$fail" ]] || exit 1
