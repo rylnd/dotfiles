@@ -91,3 +91,4 @@ it "does nothing if it can't find all authors"
 ## TEARDOWN
   pair -u &> /dev/null
   echo
+  [[ -z "$fail" ]] || exit 1
