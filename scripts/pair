@@ -76,7 +76,7 @@ pair() {
   do
     eval name=\$$user
     if [[ -z "$name" ]]; then
-      echo "Couldn't find author name for GitHub username: $user"
+      echo "Author name not found for GitHub username: $user"
       return 1
     fi
     names=(${names[@]} \$$user)

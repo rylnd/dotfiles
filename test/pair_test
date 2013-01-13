@@ -62,6 +62,20 @@ it ".pairrc doesn't rely on variables defined in the function"
   assert equal "$GIT_AUTHOR_NAME" "Ryland Herrick"
   assert match "$GIT_AUTHOR_EMAIL" "rylnd"
 
+it "alerts if not all authors are found"
+  message=`pair rylnd _bad_user_`
+  assert equal "$message" "Author name not found for GitHub username: _bad_user_"
+
+it "fails if not all authors are found"
+  pair rylnd _bad_user_ &> /dev/null
+  assert equal "$?" "1"
+
+it "does nothing if it can't find all authors"
+  pair -u &> /dev/null
+  pair rylnd _bad_user_ &> /dev/null
+  assert blank "$GIT_AUTHOR_NAME"
+  assert blank "$GIT_AUTHOR_EMAIL"
+
 ## TEARDOWN
   pair -u &> /dev/null
   echo
