@@ -1,2 +1,2 @@
 language: c
-script: test/pair_test
+script: test/runner
