@@ -7,9 +7,9 @@
   source $here/../scripts/pair
 
 it "doesn't leak variables outside the function"
-  (set -o posix; set) >/tmp/vars.before
+  (set -o posix; set) > /tmp/vars.before
   pair rylnd &> /dev/null
-  (set -o posix; set) >/tmp/vars.after
+  (set -o posix; set) > /tmp/vars.after
   extra_vars=$(diff /tmp/vars.{before,after} --ignore-matching-lines=GIT_AUTHOR)
   rm /tmp/vars.{before,after}
   assert blank "$extra_vars"

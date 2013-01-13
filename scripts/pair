@@ -14,7 +14,6 @@
 #
 # Author: Ryland Herrick
 
-
 pair() {
   local name names email pair_name pair_email user usernames
 
@@ -57,12 +56,12 @@ pair() {
 
   case "x$1" in
   x-u) echo "unset GIT_AUTHOR_NAME GIT_AUTHOR_EMAIL" > "$HOME/.pairrc"
-      print_config
-      return 0
-      ;;
+       print_config
+       return 0
+       ;;
   x-q) set_session_vars
-      return 0
-      ;;
+       return 0
+       ;;
   esac
 
   usernames=($(printf "%s\n" $@ | tr A-Z a-z | sort))
@@ -72,8 +71,7 @@ pair() {
     return 0
   fi
 
-  for user in ${usernames[@]}
-  do
+  for user in ${usernames[@]}; do
     if [[ -z "$(eval echo \$$user)" ]]; then
       echo "Author name not found for GitHub username: $user"
       return 1
