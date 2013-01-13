@@ -10,12 +10,10 @@
   }
 
   backup_files() {
-    if [[ -f $HOME/.bash_profile ]]; then profile=true; fi
-    if [[ -f $HOME/.pair ]]; then pair=true; fi
+    [[ -f $HOME/.bash_profile ]] && profile=true
 
-    $pair && mv $HOME/.pair{,.bak}
-    $profile && mv $HOME/.bash_profile{,.bak}
-    touch $HOME/.bash_profile
+    [[ -n "$profile" ]] && mv $HOME/.bash_profile{,.bak}
+    touch $HOME/.bash_profile{,.bak}
   }
 
   backup_files
@@ -34,7 +32,6 @@ it "is idempotent"
   assert equal "$added_lines" "$pair_hook"
 
 ## TEARDOWN
-  $profile && mv $HOME/.bash_profile{.bak,}
-  $pair && mv $HOME/.pair{.bak,}
+  [[ -n "$profile" ]] && mv $HOME/.bash_profile{.bak,}
   echo
   [[ -z "$fail" ]] || exit 1
