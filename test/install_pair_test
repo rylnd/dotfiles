@@ -32,6 +32,6 @@ it "is idempotent"
   assert equal "$added_lines" "$pair_hook"
 
 ## TEARDOWN
-  [[ -n "$profile" ]] && mv $HOME/.bash_profile{.bak,}
+  [[ -n "$profile" ]] && mv $HOME/.bash_profile{.bak,} || rm $HOME/.bash_profile{,.bak}
   echo
   [[ -z "$fail" ]] || exit 1
