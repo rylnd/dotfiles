@@ -10,15 +10,19 @@ assert() {
   case "x$1" in
 
   x== | xequal )
-    print_result "[[ ! '$2' = '$3' ]]" "expected [$2] to equal [$3]"
+    print_result "[[ '$2' = '$3' ]]" "expected [$2] to equal [$3]"
   ;;
 
   x=~ | xmatch )
-    print_result "[[ ! '$2' =~ $3 ]]" "expected [$2] to match [$3]"
+    print_result "[[ '$2' =~ $3 ]]" "expected [$2] to match [$3]"
   ;;
 
   xblank )
-    print_result "[[ -n '$2' ]]" "expected [$2] to be blank"
+    print_result "[[ -z '$2' ]]" "expected [$2] to be blank"
+  ;;
+
+  xtrue )
+    print_result "$2" "Expected $2 to be true"
   ;;
 
   *) echo "Unknown operand [$1]"; exit 1
@@ -32,9 +36,9 @@ print_result() {
   local norm="\033[0m"
 
   if eval $1; then
+    echo -ne $green.$norm
+  else
     echo -e "\n$red$description\n$2$norm" >&2
     fail=true
-  else
-    echo -ne $green.$norm
   fi
 }
