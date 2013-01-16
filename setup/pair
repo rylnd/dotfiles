@@ -1,7 +1,28 @@
 #!/usr/bin/env bash
 
+usage() {
+  echo "
+Usage
+
+  setup/pair [action]
+
+Actions
+  install - One-time installation of pair
+  upgrade - Updates the repo, installs pair if necessary
+"
+}
+
 get_script() {
   curl -s https://raw.github.com/rylnd/dotfiles/master/scripts/pair > $HOME/.pair
+}
+
+symlink_pair() {
+  here=$(dirname $0)
+  if [[ -e $HOME/.pair ]]; then
+    echo "*** Skipping symlink, $HOME/.pair already exists ***"
+  else
+    ln -s $here/../scripts/pair $HOME/.pair
+  fi
 }
 
 pair_hook() {
@@ -27,8 +48,28 @@ modify_dotfile() {
 }
 
 setup_complete() {
+  echo
   echo "*** pair is now set up! ***"
   echo "Please source $HOME/.pair or start a new session to use pair."
 }
 
-get_script && modify_dotfile && setup_complete
+while [[ $# > 0 ]]; do
+  arg="$1"
+  shift
+  case "x$arg" in
+    xinstall)
+      get_script && modify_dotfile && setup_complete
+      ;;
+    xupgrade)
+      git pull && symlink_pair && modify_dotfile && setup_complete
+      ;;
+    xusage)
+      usage
+      exit 0
+      ;;
+    *)
+      usage
+      exit 1
+      ;;
+  esac
+done

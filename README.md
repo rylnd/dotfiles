@@ -4,16 +4,28 @@ A collection of scripts and commands that I use every day.
 ##scripts/pair
 Configures the git author/email for multiple developers when pair programming
 
-#### Setup (Automatic)
-Paste the following into your command line:
+#### Setup (Recommended)
+First, pull down the repo:
 ```bash
-curl -s https://raw.github.com/rylnd/dotfiles/master/setup/install_pair | bash
+git clone git@github.com:rylnd/dotfiles
+```
+
+Then, to install (or to get the latest version):
+```bash
+cd dotfiles
+setup/pair upgrade
+```
+
+#### Setup (Automatic)
+For a one-off install, simply paste the following into your command line:
+```bash
+curl -s https://raw.github.com/rylnd/dotfiles/master/setup/pair | bash -s install
 ```
 
 #### Setup (Manual)
 Define the pair script in your shell by adding the following to a shell startup file (`~/.bash_profile`, `~/.bashrc`, etc.):
 ```bash
-# defines the pair function
+# define the pair function
 source "<PATH_TO_PAIR_SCRIPT>"
 ```
 
