@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-# path trickery
-  pushd $(dirname $BASH_SOURCE/../scripts) &> /dev/null
-  absolute_path=$(pwd -P)
-  popd &> /dev/null
+# get the absolute path
+pushd $(dirname $BASH_SOURCE/../) &> /dev/null
+repo_root=$(pwd -P)
+popd &> /dev/null
 
 usage() {
   echo "
@@ -25,7 +25,7 @@ symlink_pair() {
   if [[ -e $HOME/.pair ]]; then
     echo "*** Skipping symlink, $HOME/.pair already exists ***"
   else
-    ln -s $absolute_path/scripts/pair $HOME/.pair
+    ln -s $repo_root/scripts/pair $HOME/.pair
   fi
 }
 
@@ -65,7 +65,7 @@ while [[ $# > 0 ]]; do
       get_script && modify_dotfile && setup_complete
       ;;
     xupgrade)
-      pushd $absolute_path &> /dev/null
+      pushd $repo_root &> /dev/null
       git pull && symlink_pair && modify_dotfile && setup_complete
       popd &> /dev/null
       ;;

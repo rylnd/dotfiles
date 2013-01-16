@@ -31,6 +31,16 @@ it "symlinks from the repo"
   symlink_pair
   assert true "[[ -L $HOME/.pair ]]"
 
+it "symlinks to an absolute path"
+  symlink_pair &> /dev/null
+
+  # get absolute path to pair
+  pushd $(dirname $BASH_SOURCE../../) &> /dev/null
+  expected_path="$(pwd -P)/scripts/pair"
+  popd &> /dev/null
+
+  assert equal "$(readlink $HOME/.pair)" "$expected_path"
+
 ## TEARDOWN
   [[ -n "$back_bash" ]] && mv $HOME/.bash_profile{.bak,} || rm $HOME/.bash_profile
   [[ -n "$back_pair" ]] && mv $HOME/.pair{.bak,} || rm $HOME/.pair
