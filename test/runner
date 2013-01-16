@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-here=$(dirname $0)
+runner_root=$(dirname $BASH_SOURCE)
 
-for file in $(find $here -name '*_test'); do
+for file in $(find $runner_root -name '*_test'); do
   ./$file
   [[ $? -eq 0 ]] || fail=true
 done

@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
 ## SETUP
-  here=$(dirname $0)
+  scripts_test_root=$(dirname $BASH_SOURCE)
 
-  source $here/../test_helper
-  source $here/../../scripts/pair
+  source $scripts_test_root/../test_helper
+  source $scripts_test_root/../../scripts/pair
 
 it "doesn't leak variables outside the function"
   (set -o posix; set) > /tmp/vars.before

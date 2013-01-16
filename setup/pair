@@ -17,11 +17,14 @@ get_script() {
 }
 
 symlink_pair() {
-  here=$(dirname $0)
+  pushd $(dirname $BASH_SOURCE/../scripts) &> /dev/null
+  absolute_path=$(pwd -P)
+  popd &> /dev/null
+
   if [[ -e $HOME/.pair ]]; then
     echo "*** Skipping symlink, $HOME/.pair already exists ***"
   else
-    ln -s $here/../scripts/pair $HOME/.pair
+    ln -s $absolute_path/scripts/pair $HOME/.pair
   fi
 }
 

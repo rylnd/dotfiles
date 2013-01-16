@@ -1,14 +1,16 @@
 #!/usr/bin/env bash
 
 ## SETUP
-  here=$(dirname $0)
-  source $here/../test_helper
-  source $here/../../setup/pair
+  setup_test_root=$(dirname $BASH_SOURCE)
+  source $setup_test_root/../test_helper
+  source $setup_test_root/../../setup/pair
 
   backup_files() {
-    [[ -e $HOME/.bash_profile ]] && backup=true
+    [[ -e $HOME/.bash_profile ]] && back_bash=true
+    [[ -e $HOME/.pair ]] && back_pair=true
 
-    [[ -n "$backup" ]] && mv $HOME/.bash_profile{,.bak}
+    [[ -n "$back_bash" ]] && mv $HOME/.bash_profile{,.bak}
+    [[ -n "$back_pair" ]] && mv $HOME/.pair{,.bak}
     touch $HOME/.bash_profile
   }
   backup_files
@@ -26,6 +28,7 @@ it "is idempotent"
   assert equal "$added_lines" "$pair_hook"
 
 ## TEARDOWN
-  [[ -n "$backup" ]] && mv $HOME/.bash_profile{.bak,} || rm $HOME/.bash_profile
+  [[ -n "$back_bash" ]] && mv $HOME/.bash_profile{.bak,} || rm $HOME/.bash_profile
+  [[ -n "$back_pair" ]] && mv $HOME/.pair{.bak,} || rm $HOME/.pair
   echo
   [[ -z "$fail" ]] || exit 1
