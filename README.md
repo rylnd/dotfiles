@@ -7,7 +7,7 @@ Configures the git author/email for multiple developers when pair programming
 #### Setup (Automatic)
 Paste the following into your command line:
 ```bash
-curl -s https://raw.github.com/rylnd/dotfiles/master/install_pair | bash
+curl -s https://raw.github.com/rylnd/dotfiles/master/setup/install_pair | bash
 ```
 
 #### Setup (Manual)
@@ -47,11 +47,15 @@ And check your current configuration:
 ```bash
 $ pair                  # Lists the current author/email
 ```
+
 ## git/.gitconfig
 Enough said.
 
 ## git/aliases
 Bash aliases related to git. Saves me from typing some characters.
+
+## setup/
+Scripts to aid in the install/update process
 
 ## test/
 Unit tests to document the behavior of these scripts.
