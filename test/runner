@@ -4,7 +4,7 @@ here=$(dirname $0)
 
 for file in $(find $here -name '*_test'); do
   ./$file
-  [[ $? -ne 0 ]] && fail=true
+  [[ $? -eq 0 ]] || fail=true
 done
 
 [[ -z "$fail" ]] || exit 1

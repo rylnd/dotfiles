@@ -2,10 +2,10 @@
 
 ## SETUP
   here=$(dirname $0)
-  source $here/test_helper
+  source $here/../test_helper
 
   stub_script() {
-    sed '$d' $here/../install_pair > /tmp/install_pair
+    sed '$d' $here/../../setup/install_pair > /tmp/install_pair
     source /tmp/install_pair
   }
 
