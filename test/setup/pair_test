@@ -3,35 +3,29 @@
 ## SETUP
   here=$(dirname $0)
   source $here/../test_helper
-
-  stub_script() {
-    sed '$d' $here/../../setup/install_pair > /tmp/install_pair
-    source /tmp/install_pair
-  }
+  source $here/../../setup/pair
 
   backup_files() {
-    [[ -f $HOME/.bash_profile ]] && profile=true
+    [[ -e $HOME/.bash_profile ]] && backup=true
 
-    [[ -n "$profile" ]] && mv $HOME/.bash_profile{,.bak}
-    touch $HOME/.bash_profile{,.bak}
+    [[ -n "$backup" ]] && mv $HOME/.bash_profile{,.bak}
+    touch $HOME/.bash_profile
   }
-
   backup_files
-  stub_script
 
   pair_hook="$(pair_hook)"
 
 it "adds to .bash_profile"
   modify_dotfile &> /dev/null
-  added_lines="$(comm -13 $HOME/.bash_profile{.bak,})"
+  added_lines="$(cat $HOME/.bash_profile)"
   assert equal "$added_lines" "$pair_hook"
 
 it "is idempotent"
   modify_dotfile &> /dev/null
-  added_lines="$(comm -13 $HOME/.bash_profile{.bak,})"
+  added_lines="$(cat $HOME/.bash_profile)"
   assert equal "$added_lines" "$pair_hook"
 
 ## TEARDOWN
-  [[ -n "$profile" ]] && mv $HOME/.bash_profile{.bak,} || rm $HOME/.bash_profile{,.bak}
+  [[ -n "$backup" ]] && mv $HOME/.bash_profile{.bak,} || rm $HOME/.bash_profile
   echo
   [[ -z "$fail" ]] || exit 1
