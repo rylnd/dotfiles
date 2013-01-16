@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+# path trickery
+  pushd $(dirname $BASH_SOURCE/../scripts) &> /dev/null
+  absolute_path=$(pwd -P)
+  popd &> /dev/null
+
 usage() {
   echo "
 Usage
@@ -17,10 +22,6 @@ get_script() {
 }
 
 symlink_pair() {
-  pushd $(dirname $BASH_SOURCE/../scripts) &> /dev/null
-  absolute_path=$(pwd -P)
-  popd &> /dev/null
-
   if [[ -e $HOME/.pair ]]; then
     echo "*** Skipping symlink, $HOME/.pair already exists ***"
   else
@@ -64,7 +65,9 @@ while [[ $# > 0 ]]; do
       get_script && modify_dotfile && setup_complete
       ;;
     xupgrade)
+      pushd $absolute_path &> /dev/null
       git pull && symlink_pair && modify_dotfile && setup_complete
+      popd &> /dev/null
       ;;
     xusage)
       usage
