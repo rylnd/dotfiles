@@ -27,6 +27,10 @@ it "is idempotent"
   added_lines="$(cat $HOME/.bash_profile)"
   assert equal "$added_lines" "$pair_hook"
 
+it "symlinks from the repo"
+  symlink_pair
+  assert true "[[ -L $HOME/.pair ]]"
+
 ## TEARDOWN
   [[ -n "$back_bash" ]] && mv $HOME/.bash_profile{.bak,} || rm $HOME/.bash_profile
   [[ -n "$back_pair" ]] && mv $HOME/.pair{.bak,} || rm $HOME/.pair
