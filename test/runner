@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-runner_root=$(dirname $BASH_SOURCE)
+runner_root=$(dirname ${BASH_SOURCE[0]})
 
 for file in $(find $runner_root -name '*_test'); do
   ./$file

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 ## SETUP
-  setup_test_root=$(dirname $BASH_SOURCE)
+  setup_test_root=$(dirname ${BASH_SOURCE[0]})
   source $setup_test_root/../test_helper
   source $setup_test_root/../../setup/pair
 
@@ -35,7 +35,7 @@ it "symlinks to an absolute path"
   symlink_pair &> /dev/null
 
   # get absolute path to pair
-  pushd $(dirname $BASH_SOURCE../../) &> /dev/null
+  pushd $(dirname ${BASH_SOURCE[0]}../../) &> /dev/null
   expected_path="$(pwd -P)/scripts/pair"
   popd &> /dev/null
 

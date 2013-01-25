@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # get the absolute path
-pushd $(dirname $BASH_SOURCE/../) &> /dev/null
+pushd $(dirname ${BASH_SOURCE[0]}/../) &> /dev/null
 repo_root=$(pwd -P)
 popd &> /dev/null
 
