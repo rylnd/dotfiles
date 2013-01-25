@@ -15,7 +15,7 @@ end_describe() {
 }
 
 it() {
-  description="$1"
+  assertion="$1"
 }
 
 assert() {
@@ -53,10 +53,10 @@ print_result() {
 
   indent
   if eval "$1"; then
-    echo -e "$green$description$norm"
+    echo -e "$green$assertion$norm"
   else
     fail=true
-    echo -e "$red$description" >&2
+    echo -e "$red$assertion" >&2
     indent
     echo -e "($2)$norm" >&2
   fi
