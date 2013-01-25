@@ -1,3 +1,19 @@
+test_indent=1
+
+indent() {
+  printf '  %.0s' $(eval echo "{1..$test_indent}")
+}
+
+describe() {
+  indent
+  echo "$1"
+  ((test_indent += 1))
+}
+
+end_describe() {
+  ((test_indent -= 1))
+}
+
 it() {
   description="$1"
 }
@@ -35,10 +51,13 @@ print_result() {
   local green="\033[0;32m"
   local norm="\033[0m"
 
+  indent
   if eval "$1"; then
-    echo -ne $green.$norm
+    echo -e "$green$description$norm"
   else
-    echo -e "\n$red$description\n$2$norm" >&2
     fail=true
+    echo -e "$red$description" >&2
+    indent
+    echo -e "($2)$norm" >&2
   fi
 }
