@@ -26,15 +26,15 @@ assert() {
   case "x$1" in
 
   x== | xequal )
-    print_result "[[ '$2' = '$3' ]]" "expected [$2] to equal [$3]"
+    print_result "[[ '$2' = '$3' ]]" "Expected [$2] to equal [$3]"
   ;;
 
   x=~ | xmatch )
-    print_result "[[ '$2' =~ $3 ]]" "expected [$2] to match [$3]"
+    print_result "[[ '$2' =~ $3 ]]" "Expected [$2] to match [$3]"
   ;;
 
   xblank )
-    print_result "[[ -z '$2' ]]" "expected [$2] to be blank"
+    print_result "[[ -z '$2' ]]" "Expected [$2] to be blank"
   ;;
 
   xtrue )
