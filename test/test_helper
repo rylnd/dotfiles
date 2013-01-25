@@ -35,7 +35,7 @@ print_result() {
   local green="\033[0;32m"
   local norm="\033[0m"
 
-  if eval $1; then
+  if eval "$1"; then
     echo -ne $green.$norm
   else
     echo -e "\n$red$description\n$2$norm" >&2
