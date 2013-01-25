@@ -17,29 +17,31 @@
 
   pair_hook="$(pair_hook)"
 
-it "adds to .bash_profile"
-  modify_dotfile &> /dev/null
-  added_lines="$(cat $HOME/.bash_profile)"
-  assert equal "$added_lines" "$pair_hook"
+describe "setup_pair"
+  it "adds to .bash_profile"
+    modify_dotfile &> /dev/null
+    added_lines="$(cat $HOME/.bash_profile)"
+    assert equal "$added_lines" "$pair_hook"
 
-it "is idempotent"
-  modify_dotfile &> /dev/null
-  added_lines="$(cat $HOME/.bash_profile)"
-  assert equal "$added_lines" "$pair_hook"
+  it "is idempotent"
+    modify_dotfile &> /dev/null
+    added_lines="$(cat $HOME/.bash_profile)"
+    assert equal "$added_lines" "$pair_hook"
 
-it "symlinks from the repo"
-  symlink_pair
-  assert true "[[ -L $HOME/.pair ]]"
+  it "symlinks from the repo"
+    symlink_pair
+    assert true "[[ -L $HOME/.pair ]]"
 
-it "symlinks to an absolute path"
-  symlink_pair &> /dev/null
+  it "symlinks to an absolute path"
+    symlink_pair &> /dev/null
 
-  # get absolute path to pair
-  pushd $(dirname ${BASH_SOURCE[0]}../../) &> /dev/null
-  expected_path="$(pwd -P)/scripts/pair"
-  popd &> /dev/null
+    # get absolute path to pair
+    pushd $(dirname ${BASH_SOURCE[0]}../../) &> /dev/null
+    expected_path="$(pwd -P)/scripts/pair"
+    popd &> /dev/null
 
-  assert equal "$(readlink $HOME/.pair)" "$expected_path"
+    assert equal "$(readlink $HOME/.pair)" "$expected_path"
+end_describe
 
 ## TEARDOWN
   [[ -n "$back_bash" ]] && mv $HOME/.bash_profile{.bak,} || rm $HOME/.bash_profile

@@ -6,87 +6,97 @@
   source $scripts_test_root/../test_helper
   source $scripts_test_root/../../scripts/pair
 
-it "doesn't leak variables outside the function"
-  (set -o posix; set) > /tmp/vars.before
-  pair rylnd &> /dev/null
-  (set -o posix; set) > /tmp/vars.after
-  extra_vars=$(diff /tmp/vars.{before,after} --ignore-matching-lines=GIT_AUTHOR)
-  rm /tmp/vars.{before,after}
-  assert blank "$extra_vars"
+describe "pair"
+  describe "variable sanitation"
+    it "doesn't leak variables outside the function"
+      (set -o posix; set) > /tmp/vars.before
+      pair rylnd &> /dev/null
+      (set -o posix; set) > /tmp/vars.after
+      extra_vars=$(diff /tmp/vars.{before,after} --ignore-matching-lines=GIT_AUTHOR)
+      rm /tmp/vars.{before,after}
+      assert blank "$extra_vars"
+  end_describe
 
-it "succeeds when unsetting"
-  pair -u &> /dev/null
-  assert equal "$?" "0"
+  describe "exit codes"
+    it "returns 0 when unsetting"
+      pair -u &> /dev/null
+      assert equal "$?" "0"
 
-it "succeeds when printing config"
-  pair &> /dev/null
-  assert equal "$?" "0"
+    it "returns 0 when printing config"
+      pair &> /dev/null
+      assert equal "$?" "0"
 
-it "succeeds when all authors are found"
-  pair rylnd &> /dev/null
-  assert equal "$?" "0"
+    it "returns 0 when all authors are found"
+      pair rylnd &> /dev/null
+      assert equal "$?" "0"
 
-it "sets \$GIT_AUTHOR_NAME"
-  pair rylnd &> /dev/null
-  assert equal "$GIT_AUTHOR_NAME" "Ryland Herrick"
+    it "returns nonzero if not all authors are found"
+      pair rylnd _bad_user_ &> /dev/null
+      assert equal "$?" "1"
+  end_describe
 
-it "sets \$GIT_AUTHOR_EMAIL"
-  pair rylnd &> /dev/null
-  assert match "$GIT_AUTHOR_EMAIL" "rylnd"
+  describe "setting of git environment variables"
+    it "sets \$GIT_AUTHOR_NAME"
+      pair rylnd &> /dev/null
+      assert equal "$GIT_AUTHOR_NAME" "Ryland Herrick"
 
-it "unsets \$GIT_AUTHOR_NAME"
-  pair -u &> /dev/null
-  assert blank "$GIT_AUTHOR_NAME"
+    it "sets \$GIT_AUTHOR_EMAIL"
+      pair rylnd &> /dev/null
+      assert match "$GIT_AUTHOR_EMAIL" "rylnd"
 
-it "unsets \$GIT_AUTHOR_EMAIL"
-  pair -u &> /dev/null
-  assert blank "$GIT_AUTHOR_EMAIL"
+    it "unsets \$GIT_AUTHOR_NAME"
+      pair -u &> /dev/null
+      assert blank "$GIT_AUTHOR_NAME"
 
-it "uses dev@bendyworks.com in the email"
-  pair rylnd &> /dev/null
-  assert match "$GIT_AUTHOR_EMAIL" "dev.*bendyworks\.com"
+    it "unsets \$GIT_AUTHOR_EMAIL"
+      pair -u &> /dev/null
+      assert blank "$GIT_AUTHOR_EMAIL"
 
-it "sets multiple usernames in the email"
-  pair rylnd bendycode &> /dev/null
-  assert match "$GIT_AUTHOR_EMAIL" "rylnd"
-  assert match "$GIT_AUTHOR_EMAIL" "bendycode"
+    it "uses dev@bendyworks.com in the email"
+      pair rylnd &> /dev/null
+      assert match "$GIT_AUTHOR_EMAIL" "dev.*bendyworks\.com"
 
-it "sorts multiple usernames in the email alphabetically"
-  pair rylnd bendycode &> /dev/null
-  assert match "$GIT_AUTHOR_EMAIL" "bendycode.rylnd@"
+    it "sets multiple usernames in the email"
+      pair rylnd bendycode &> /dev/null
+      assert match "$GIT_AUTHOR_EMAIL" "rylnd"
+      assert match "$GIT_AUTHOR_EMAIL" "bendycode"
 
-it "sets multiple names for the author"
-  pair rylnd bendycode &> /dev/null
-  assert match "$GIT_AUTHOR_NAME" "Ryland\ Herrick"
-  assert match "$GIT_AUTHOR_NAME" "Stephen\ Anderson"
+    it "sorts multiple usernames in the email alphabetically"
+      pair rylnd bendycode &> /dev/null
+      assert match "$GIT_AUTHOR_EMAIL" "bendycode.rylnd@"
 
-it "sorts author names alphabetically by username"
-  pair rylnd bendycode &> /dev/null
-  assert equal "$GIT_AUTHOR_NAME" "Stephen Anderson and Ryland Herrick"
+    it "sets multiple names for the author"
+      pair rylnd bendycode &> /dev/null
+      assert match "$GIT_AUTHOR_NAME" "Ryland\ Herrick"
+      assert match "$GIT_AUTHOR_NAME" "Stephen\ Anderson"
 
-it "correctly lists more than two authors WITH AN OXFORD COMMA"
-  pair rylnd bendycode bigtiger &> /dev/null
-  assert equal "$GIT_AUTHOR_NAME" "Stephen Anderson, Jim Remsik, and Ryland Herrick"
+    it "sorts author names alphabetically by username"
+      pair rylnd bendycode &> /dev/null
+      assert equal "$GIT_AUTHOR_NAME" "Stephen Anderson and Ryland Herrick"
 
-it ".pairrc doesn't rely on variables defined in the function"
-  pair rylnd &> /dev/null
-  source $HOME/.pairrc
-  assert equal "$GIT_AUTHOR_NAME" "Ryland Herrick"
-  assert match "$GIT_AUTHOR_EMAIL" "rylnd"
+    it "correctly lists more than two authors WITH AN OXFORD COMMA"
+      pair rylnd bendycode bigtiger &> /dev/null
+      assert equal "$GIT_AUTHOR_NAME" "Stephen Anderson, Jim Remsik, and Ryland Herrick"
+  end_describe
 
-it "alerts if not all authors are found"
-  message=$(pair rylnd _bad_user_)
-  assert equal "$message" "Author name not found for GitHub username: _bad_user_"
+  describe ".pairrc"
+    it "doesn't rely on variables defined in the function"
+      pair rylnd &> /dev/null
+      source $HOME/.pairrc
+      assert equal "$GIT_AUTHOR_NAME" "Ryland Herrick"
+      assert match "$GIT_AUTHOR_EMAIL" "rylnd"
+  end_describe
 
-it "fails if not all authors are found"
-  pair rylnd _bad_user_ &> /dev/null
-  assert equal "$?" "1"
+  it "alerts if not all authors are found"
+    message=$(pair rylnd _bad_user_)
+    assert equal "$message" "Author name not found for GitHub username: _bad_user_"
 
-it "does nothing if it can't find all authors"
-  pair -u &> /dev/null
-  pair rylnd _bad_user_ &> /dev/null
-  assert blank "$GIT_AUTHOR_NAME"
-  assert blank "$GIT_AUTHOR_EMAIL"
+  it "does nothing if it can't find all authors"
+    pair -u &> /dev/null
+    pair rylnd _bad_user_ &> /dev/null
+    assert blank "$GIT_AUTHOR_NAME"
+    assert blank "$GIT_AUTHOR_EMAIL"
+end_describe
 
 ## TEARDOWN
   pair -u &> /dev/null
