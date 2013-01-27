@@ -3,7 +3,7 @@
 ## SETUP
   scripts_test_root=$(dirname ${BASH_SOURCE[0]})
 
-  source $scripts_test_root/../test_helper
+  source $scripts_test_root/../shpec_helper
   source $scripts_test_root/../../scripts/pair
 
 describe "pair"

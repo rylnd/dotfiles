@@ -2,7 +2,7 @@
 
 ## SETUP
   setup_test_root=$(dirname ${BASH_SOURCE[0]})
-  source $setup_test_root/../test_helper
+  source $setup_test_root/../shpec_helper
   source $setup_test_root/../../setup/pair
 
   backup_files() {
