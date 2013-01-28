@@ -79,6 +79,30 @@ describe "pair"
       assert equal "$GIT_AUTHOR_NAME" "Stephen Anderson, Jim Remsik, and Ryland Herrick"
   end_describe
 
+  describe "hybrid mode"
+    it "finds unknown users from github"
+      pair rylnd tenderlove &> /dev/null
+      assert equal "$?" "0"
+      assert equal "$GIT_AUTHOR_NAME" "Ryland Herrick and Aaron Patterson"
+
+    describe "when offline"
+      # stub curls
+      function curl() {
+        echo "foo"
+      }
+
+      it "still works with local authors"
+        pair rylnd &> /dev/null
+        assert equal "$GIT_AUTHOR_NAME" "Ryland Herrick"
+
+      it "fails if offline and the user is unknown"
+        pair rylnd tenderlove &> /dev/null
+        assert equal "$?" "1"
+
+      unset -f curl
+    end_describe
+  end_describe
+
   describe ".pairrc"
     it "doesn't rely on variables defined in the function"
       pair rylnd &> /dev/null
@@ -89,7 +113,7 @@ describe "pair"
 
   it "alerts if not all authors are found"
     message=$(pair rylnd _bad_user_)
-    assert equal "$message" "Author name not found for GitHub username: _bad_user_"
+    assert match "$message" "No\ author\ name\ found\ for\ GitHub\ username:\ _bad_user_"
 
   it "does nothing if it can't find all authors"
     pair -u &> /dev/null
