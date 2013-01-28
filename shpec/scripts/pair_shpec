@@ -100,5 +100,3 @@ end_describe
 
 ## TEARDOWN
   pair -u &> /dev/null
-  echo
-  [[ -z "$fail" ]] || exit 1

@@ -46,5 +46,3 @@ end_describe
 ## TEARDOWN
   [[ -n "$back_bash" ]] && mv $HOME/.bash_profile{.bak,} || rm $HOME/.bash_profile
   [[ -n "$back_pair" ]] && mv $HOME/.pair{.bak,} || rm $HOME/.pair
-  echo
-  [[ -z "$fail" ]] || exit 1
