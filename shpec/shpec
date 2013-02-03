@@ -1,0 +1,91 @@
+#!/usr/bin/env bash
+
+test_indent=1
+
+indent() {
+  printf '  %.0s' $(eval echo "{1..$test_indent}")
+}
+
+describe() {
+  indent
+  echo "$1"
+  ((test_indent += 1))
+}
+
+end_describe() {
+  ((test_indent -= 1))
+  if [[ $test_indent -eq 1 ]]; then
+    [[ -z "$fail" ]] || exit 1
+  fi
+}
+
+it() {
+  assertion="$1"
+}
+
+assert() {
+  if [[ $# -lt 2 ]]; then
+    echo "Usage: $0 OPERAND [ARGS...]"
+  fi
+
+  case "x$1" in
+
+  xequal )
+    print_result "[[ '$2' = '$3' ]]" "Expected [$2] to equal [$3]";;
+
+  xunequal )
+    print_result "[[ '$2' != '$3' ]]" "Expected [$2] not to equal [$3]";;
+
+  xmatch )
+    print_result "[[ '$2' =~ $3 ]]" "Expected [$2] to match [$3]";;
+
+  xpresent )
+    print_result "[[ -n '$2' ]]" "Expected [$2] to be present";;
+
+  xblank )
+    print_result "[[ -z '$2' ]]" "Expected [$2] to be blank";;
+
+  xfile_present )
+    print_result "[[ -e $2 ]]" "Expected file [$2] to exist";;
+
+  xfile_absent )
+    print_result "[[ ! -e $2 ]]" "Expected file [$2] not to exist";;
+
+  xsymlink )
+    link="$(readlink $2)"
+    print_result "[[ '$link' = '$3' ]]" "Expected [$2] to link to [$3], but got [$link]";;
+
+  xtest )
+    print_result "$2" "Expected $2 to be true";;
+
+  *) print_result false "Error: Unknown operand [$1]"
+
+  esac
+}
+
+print_result() {
+  local red="\033[0;31m"
+  local green="\033[0;32m"
+  local norm="\033[0m"
+
+  indent
+  if eval "$1"; then
+    echo -e "$green$assertion$norm"
+  else
+    fail=true
+    echo -e "$red$assertion" >&2
+    indent
+    echo -e "($2)$norm" >&2
+  fi
+}
+
+shpec_root=$(find . -name 'shpec' -type d)
+# assume current directory is test dir if not found
+shpec_root=${shpec_root:-.}
+files=${@:-$(find . -name '*_shpec')}
+
+for file in $files; do
+  . $file
+done
+
+[[ -z "$fail" ]] || exit 1

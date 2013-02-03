@@ -1,10 +1,6 @@
-#!/usr/bin/env bash
+source $shpec_root/../setup/pair
 
 ## SETUP
-  setup_test_root=$(dirname ${BASH_SOURCE[0]})
-  source $setup_test_root/../shpec_helper
-  source $setup_test_root/../../setup/pair
-
   backup_files() {
     [[ -e $HOME/.bash_profile ]] && back_bash=true
     [[ -e $HOME/.pair ]] && back_pair=true
@@ -30,17 +26,17 @@ describe "setup_pair"
 
   it "symlinks from the repo"
     symlink_pair
-    assert true "[[ -L $HOME/.pair ]]"
+    assert test "[[ -L $HOME/.pair ]]"
 
   it "symlinks to an absolute path"
     symlink_pair &> /dev/null
 
     # get absolute path to pair
-    pushd $(dirname ${BASH_SOURCE[0]}../../) &> /dev/null
+    pushd $(dirname $shpec_root) &> /dev/null
     expected_path="$(pwd -P)/scripts/pair"
     popd &> /dev/null
 
-    assert equal "$(readlink $HOME/.pair)" "$expected_path"
+    assert symlink "$HOME/.pair" "$expected_path"
 end_describe
 
 ## TEARDOWN
