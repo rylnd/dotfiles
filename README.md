@@ -69,8 +69,8 @@ Bash aliases related to git. Saves me from typing some characters.
 ## setup/
 Scripts to aid in the install/update process
 
-## test/
-Unit tests to document the behavior of these scripts.
+## shpec/
+[shpec](https://github.com/shpec/shpec) tests to document the behavior of these scripts.
 
 # Contributing
 Pull requests are always welcome.

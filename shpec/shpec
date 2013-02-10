@@ -1,25 +1,30 @@
 #!/usr/bin/env bash
-
-test_indent=1
+examples=0
+failures=0
+test_indent=0
+red="\033[0;31m"
+green="\033[0;32m"
+norm="\033[0m"
 
 indent() {
-  printf '  %.0s' $(eval echo "{1..$test_indent}")
+  printf '%*s' $test_indent
 }
 
 describe() {
   indent
   echo "$1"
-  ((test_indent += 1))
+  ((test_indent += 2))
 }
 
 end_describe() {
-  ((test_indent -= 1))
-  if [[ $test_indent -eq 1 ]]; then
-    [[ -z "$fail" ]] || exit 1
+  ((test_indent -= 2))
+  if [ $test_indent -eq 0 ]; then
+    [ $failures -eq 0 ]
   fi
 }
 
 it() {
+  ((examples += 1))
   assertion="$1"
 }
 
@@ -35,6 +40,12 @@ assert() {
 
   xunequal )
     print_result "[[ '$2' != '$3' ]]" "Expected [$2] not to equal [$3]";;
+
+  xgt )
+    print_result "[[ '$2' > '$3' ]]" "Expected [$2] to be > [$3]";;
+
+  xlt )
+    print_result "[[ '$2' < '$3' ]]" "Expected [$2] to be < [$3]";;
 
   xmatch )
     print_result "[[ '$2' =~ $3 ]]" "Expected [$2] to match [$3]";;
@@ -64,28 +75,27 @@ assert() {
 }
 
 print_result() {
-  local red="\033[0;31m"
-  local green="\033[0;32m"
-  local norm="\033[0m"
-
   indent
   if eval "$1"; then
     echo -e "$green$assertion$norm"
   else
-    fail=true
-    echo -e "$red$assertion" >&2
+    ((failures += 1))
+    echo -e "$red$assertion"
     indent
-    echo -e "($2)$norm" >&2
+    echo -e "($2)$norm"
   fi
 }
 
-shpec_root=$(find . -name 'shpec' -type d)
+shpec_root=$(find . -name 'shpec' -type d | grep -v '.git')
 # assume current directory is test dir if not found
 shpec_root=${shpec_root:-.}
-files=${@:-$(find . -name '*_shpec')}
+files=${@:-$(find . -name '*_shpec.sh')}
 
-for file in $files; do
+time for file in $files; do
   . $file
 done
 
-[[ -z "$fail" ]] || exit 1
+[ $failures -eq 0 ] && color=$green || color=$red
+echo -e "${color}${examples} examples, ${failures} failures${norm}"
+
+[ $failures -eq 0 ]
