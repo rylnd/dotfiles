@@ -62,6 +62,9 @@ pair() {
   x-q) set_session_vars
        return 0
        ;;
+  x-*) echo "Unknown option: '$1'"
+       return 1
+       ;;
   esac
 
   usernames=($(printf "%s\n" $@ | tr A-Z a-z | sort))

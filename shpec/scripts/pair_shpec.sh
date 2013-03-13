@@ -102,6 +102,18 @@ describe "pair"
       assert match "$GIT_AUTHOR_EMAIL" "rylnd"
   end_describe
 
+  describe "option handling"
+    describe "unknown options"
+      it "fails"
+        pair -g 2>&1 > /dev/null
+        assert equal "$?" "1"
+
+      it "prints a helpful message"
+        message=$(pair -g)
+        assert equal "$message" "Unknown option: '-g'"
+    end_describe
+  end_describe
+
   it "alerts if not all authors are found"
     message=$(pair rylnd _bad_user_)
     assert match "$message" "No\ author\ name\ found\ for\ GitHub\ username:\ _bad_user_"
