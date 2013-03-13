@@ -1,4 +1,4 @@
-source $shpec_root/../scripts/pair
+source $SHPEC_ROOT/../scripts/pair
 
 describe "pair"
   describe "variable sanitation"
@@ -80,10 +80,7 @@ describe "pair"
       assert equal "$GIT_AUTHOR_NAME" "Ryland Herrick and Aaron Patterson"
 
     describe "when offline"
-      # stub curls
-      function curl() {
-        echo "foo"
-      }
+      stub_command "curl"
 
       it "still works with local authors"
         pair rylnd &> /dev/null
@@ -93,7 +90,7 @@ describe "pair"
         pair rylnd tenderlove &> /dev/null
         assert equal "$?" "1"
 
-      unset -f curl
+      unstub_command "curl"
     end_describe
   end_describe
 

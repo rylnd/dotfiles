@@ -1,4 +1,4 @@
-source $shpec_root/../setup/pair
+source $SHPEC_ROOT/../setup/pair
 
 ## SETUP
   backup_files() {
@@ -32,7 +32,7 @@ describe "setup_pair"
     symlink_pair &> /dev/null
 
     # get absolute path to pair
-    pushd $(dirname $shpec_root) &> /dev/null
+    pushd $(dirname $SHPEC_ROOT) &> /dev/null
     expected_path="$(pwd -P)/scripts/pair"
     popd &> /dev/null
 

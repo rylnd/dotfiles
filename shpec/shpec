@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+VERSION=0.0.9
 examples=0
 failures=0
 test_indent=0
@@ -23,29 +24,32 @@ end_describe() {
   fi
 }
 
+stub_command() {
+  body="${2:-:}"
+  eval "$1() { $body; }"
+}
+
+unstub_command() { unset -f "$1"; }
+
 it() {
   ((examples += 1))
   assertion="$1"
 }
 
 assert() {
-  if [[ $# -lt 2 ]]; then
-    echo "Usage: $0 OPERAND [ARGS...]"
-  fi
-
   case "x$1" in
 
   xequal )
-    print_result "[[ '$2' = '$3' ]]" "Expected [$2] to equal [$3]";;
+    print_result "[[ $'$2' = $'$3' ]]" "Expected [$2] to equal [$3]";;
 
   xunequal )
-    print_result "[[ '$2' != '$3' ]]" "Expected [$2] not to equal [$3]";;
+    print_result "[[ $'$2' != $'$3' ]]" "Expected [$2] not to equal [$3]";;
 
   xgt )
-    print_result "[[ '$2' > '$3' ]]" "Expected [$2] to be > [$3]";;
+    print_result "[[ $2 -gt $3 ]]" "Expected [$2] to be > [$3]";;
 
   xlt )
-    print_result "[[ '$2' < '$3' ]]" "Expected [$2] to be < [$3]";;
+    print_result "[[ $2 -lt $3 ]]" "Expected [$2] to be < [$3]";;
 
   xmatch )
     print_result "[[ '$2' =~ $3 ]]" "Expected [$2] to match [$3]";;
@@ -69,7 +73,13 @@ assert() {
   xtest )
     print_result "$2" "Expected $2 to be true";;
 
-  *) print_result false "Error: Unknown operand [$1]"
+  * )
+    if type "$1" 2>/dev/null | grep -q 'function'; then
+      matcher="$1"; shift
+      $matcher "$@"
+    else
+      print_result false "Error: Unknown matcher [$1]"
+    fi;;
 
   esac
 }
@@ -86,16 +96,31 @@ print_result() {
   fi
 }
 
-shpec_root=$(find . -name 'shpec' -type d | grep -v '.git')
-# assume current directory is test dir if not found
-shpec_root=${shpec_root:-.}
-files=${@:-$(find . -name '*_shpec.sh')}
+SHPEC_ROOT=${SHPEC_ROOT:-$([[ -d './shpec' ]] && echo './shpec' || echo '.')}
 
-time for file in $files; do
-  . $file
-done
+case "$1" in
 
-[ $failures -eq 0 ] && color=$green || color=$red
-echo -e "${color}${examples} examples, ${failures} failures${norm}"
+  -v|--version )
 
-[ $failures -eq 0 ]
+    echo "$VERSION";;
+
+  * )
+
+    matcher_files="$(find "$SHPEC_ROOT/matchers" -name '*.sh' 2>/dev/null)"
+
+    for matcher_file in $matcher_files; do
+      . "$matcher_file"
+    done
+
+    files="${@:-$(find $SHPEC_ROOT -name '*_shpec.sh')}"
+
+    time for file in $files; do
+      . "$file"
+    done
+
+    [ $failures -eq 0 ] && color=$green || color=$red
+    echo -e "${color}${examples} examples, ${failures} failures${norm}"
+
+    [ $failures -eq 0 ]
+
+esac
