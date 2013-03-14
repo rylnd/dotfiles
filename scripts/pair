@@ -1,19 +1,3 @@
-# Configures the local git author/email to a list of developers when pair programming
-#
-# Installation: Source this file to define the pair function in your session.
-#
-# Usage: pair rylnd mathias (Sets the author to 'Matt Gauger and Ryland Herrick')
-#        pair               (Lists current git author/email)
-#        pair -u            (Unsets the author/email)
-#
-# You may also set more than two users in the pair:
-#        pair bigtiger devn mathias (Sets the author to 'Jim Remsik, Devin Walters and Matt Gauger')
-#
-# Thanks to Brian Hemlkamp (http://brynary.com) for the original ruby implementation
-# and to Matt Gauger for his work on the ruby version
-#
-# Author: Ryland Herrick
-
 pair() {
   local name names email pair_name pair_email user usernames
 
@@ -60,6 +44,16 @@ pair() {
        return 0
        ;;
   x-q) set_session_vars
+       return 0
+       ;;
+  x-h | x--help)
+       echo "Usage: pair [option] | [username...]"
+       echo "Examples:"
+       echo "  pair rylnd mathias     Sets git author to "Matt Gauger and Ryland Herrick""
+       echo "  pair                   Lists current author/email"
+       echo "Options:"
+       echo "  -u                     Unsets author/email"
+       echo "  -h, --help             Prints this lovely message"
        return 0
        ;;
   x-*) echo "Unknown option: '$1'"

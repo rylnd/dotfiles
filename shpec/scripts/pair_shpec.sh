@@ -16,6 +16,10 @@ describe "pair"
       pair -u &> /dev/null
       assert equal "$?" "0"
 
+    it "returns 0 when printing help"
+      pair -h &> /dev/null
+      assert equal "$?" "0"
+
     it "returns 0 when printing config"
       pair &> /dev/null
       assert equal "$?" "0"
@@ -111,6 +115,13 @@ describe "pair"
       it "prints a helpful message"
         message=$(pair -g)
         assert equal "$message" "Unknown option: '-g'"
+    end_describe
+
+    describe "help message"
+      it "prints usage and examples"
+        message=$(pair -h)
+        assert match "$message" "Usage"
+        assert match "$message" "Examples"
     end_describe
   end_describe
 
