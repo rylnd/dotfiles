@@ -1,0 +1,53 @@
+HTTP/1.1 200 OK
+Server: GitHub.com
+Date: Thu, 02 Jan 2014 15:25:30 GMT
+Content-Type: application/json; charset=utf-8
+Status: 200 OK
+X-RateLimit-Limit: 60
+X-RateLimit-Remaining: 52
+X-RateLimit-Reset: 1388679580
+Cache-Control: public, max-age=60, s-maxage=60
+Last-Modified: Wed, 01 Jan 2014 15:56:49 GMT
+ETag: "c020f069db627fbfa0912587030a9300"
+Vary: Accept
+X-GitHub-Media-Type: github.beta
+X-Content-Type-Options: nosniff
+Content-Length: 1442
+Access-Control-Allow-Credentials: true
+Access-Control-Expose-Headers: ETag, Link, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+Access-Control-Allow-Origin: *
+X-GitHub-Request-Id: 615739D2:06F3:4B818:52C584EA
+Vary: Accept-Encoding
+
+{
+  "login": "tenderlove",
+  "id": 3124,
+  "avatar_url": "https://gravatar.com/avatar/f29327647a9cff5c69618bae420792ea?d=https%3A%2F%2Fidenticons.github.com%2F7c78335a8924215ea5c22fda1aac7b75.png&r=x",
+  "gravatar_id": "f29327647a9cff5c69618bae420792ea",
+  "url": "https://api.github.com/users/tenderlove",
+  "html_url": "https://github.com/tenderlove",
+  "followers_url": "https://api.github.com/users/tenderlove/followers",
+  "following_url": "https://api.github.com/users/tenderlove/following{/other_user}",
+  "gists_url": "https://api.github.com/users/tenderlove/gists{/gist_id}",
+  "starred_url": "https://api.github.com/users/tenderlove/starred{/owner}{/repo}",
+  "subscriptions_url": "https://api.github.com/users/tenderlove/subscriptions",
+  "organizations_url": "https://api.github.com/users/tenderlove/orgs",
+  "repos_url": "https://api.github.com/users/tenderlove/repos",
+  "events_url": "https://api.github.com/users/tenderlove/events{/privacy}",
+  "received_events_url": "https://api.github.com/users/tenderlove/received_events",
+  "type": "User",
+  "site_admin": false,
+  "name": "Aaron Patterson",
+  "company": null,
+  "blog": "http://tenderlovemaking.com/",
+  "location": "Seattle",
+  "email": "aaron.patterson@gmail.com",
+  "hireable": false,
+  "bio": null,
+  "public_repos": 176,
+  "public_gists": 551,
+  "followers": 2777,
+  "following": 19,
+  "created_at": "2008-03-14T20:04:17Z",
+  "updated_at": "2014-01-01T15:56:49Z"
+}
