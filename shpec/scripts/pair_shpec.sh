@@ -79,13 +79,9 @@ describe "pair"
 
   describe "hybrid mode"
     it "finds unknown users from github"
-      stub_command "curl" "cat shpec/fixtures/tenderlove.json"
-
       pair rylnd tenderlove &> /dev/null
       assert equal "$?" "0"
       assert equal "$GIT_AUTHOR_NAME" "Ryland Herrick and Aaron Patterson"
-
-      unstub_command "curl"
 
     describe "when offline"
       stub_command "curl"
