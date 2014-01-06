@@ -126,14 +126,22 @@ describe "pair"
   end_describe
 
   it "alerts if not all authors are found"
+    stub_command "curl" "cat shpec/fixtures/_bad_user_.json"
+
     message=$(pair rylnd _bad_user_)
     assert match "$message" "No\ author\ name\ found\ for\ GitHub\ username:\ _bad_user_"
 
+    unstub_command "curl"
+
   it "does nothing if it can't find all authors"
+    stub_command "curl" "cat shpec/fixtures/_bad_user_.json"
+
     pair -u &> /dev/null
     pair rylnd _bad_user_ &> /dev/null
     assert blank "$GIT_AUTHOR_NAME"
     assert blank "$GIT_AUTHOR_EMAIL"
+
+    unstub_command "curl"
 end_describe
 
 ## TEARDOWN

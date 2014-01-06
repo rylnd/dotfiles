@@ -1,0 +1,20 @@
+HTTP/1.1 404 Not Found
+Server: GitHub.com
+Date: Thu, 02 Jan 2014 15:24:08 GMT
+Content-Type: application/json; charset=utf-8
+Status: 404 Not Found
+X-RateLimit-Limit: 60
+X-RateLimit-Remaining: 53
+X-RateLimit-Reset: 1388679580
+X-GitHub-Media-Type: github.beta
+X-Content-Type-Options: nosniff
+Content-Length: 86
+Access-Control-Allow-Credentials: true
+Access-Control-Expose-Headers: ETag, Link, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+Access-Control-Allow-Origin: *
+X-GitHub-Request-Id: 615739D2:6F7A:A42A2:52C58497
+
+{
+  "message": "Not Found",
+  "documentation_url": "http://developer.github.com/v3"
+}
