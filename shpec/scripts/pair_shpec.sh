@@ -129,7 +129,7 @@ describe "pair"
     stub_command "curl" "cat shpec/fixtures/_bad_user_.json"
 
     message=$(pair rylnd _bad_user_)
-    assert match "$message" "No\ author\ name\ found\ for\ GitHub\ username:\ _bad_user_"
+    assert match "$message" "No\ user\ found\ for\ GitHub\ username:\ _bad_user_"
 
     unstub_command "curl"
 
@@ -140,6 +140,14 @@ describe "pair"
     pair rylnd _bad_user_ &> /dev/null
     assert blank "$GIT_AUTHOR_NAME"
     assert blank "$GIT_AUTHOR_EMAIL"
+
+    unstub_command "curl"
+
+  it "falls back to username for nonlocal usernames that don't have a full name set on Github"
+    stub_command "curl" "cat shpec/fixtures/github_user_no_full_name.json"
+
+    message=$(pair rylnd no_full_name)
+    assert match "$message" "No\ author\ name\ found\ for\ GitHub\ username:\ no_full_name"
 
     unstub_command "curl"
 end_describe
