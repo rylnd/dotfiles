@@ -78,7 +78,7 @@ pair() {
         echo "No user found for GitHub username: $user."
         echo "Is the username correct?"
         return 1
-      elif [ -z "$name" ]; then
+      elif [[ -z "$name" ]]; then
         echo "No author name found for GitHub username: $user."
         echo "Does their GitHub profile have a name?"
         echo "Using their GitHub username for now."
