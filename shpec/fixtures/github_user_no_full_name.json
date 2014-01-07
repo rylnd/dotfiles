@@ -1,0 +1,52 @@
+HTTP/1.1 200 OK
+Server: GitHub.com
+Date: Mon, 06 Jan 2014 03:26:17 GMT
+Content-Type: application/json; charset=utf-8
+Status: 200 OK
+X-RateLimit-Limit: 60
+X-RateLimit-Remaining: 39
+X-RateLimit-Reset: 1388981578
+Cache-Control: public, max-age=60, s-maxage=60
+Last-Modified: Mon, 06 Jan 2014 03:11:19 GMT
+ETag: "6858b60fe2f58fa664118787c92794dc"
+Vary: Accept
+X-GitHub-Media-Type: github.beta
+X-Content-Type-Options: nosniff
+Content-Length: 1403
+Access-Control-Allow-Credentials: true
+Access-Control-Expose-Headers: ETag, Link, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+Access-Control-Allow-Origin: *
+X-GitHub-Request-Id: 615739D2:6F87:673F1F0:52CA2259
+Vary: Accept-Encoding
+
+{
+  "login": "mathias",
+  "id": 3340,
+  "avatar_url": "https://gravatar.com/avatar/311c342bfd324eb9d3603222f7f36f24?d=https%3A%2F%2Fidenticons.github.com%2Ff471223d1a1614b58a7dc45c9d01df19.png&r=x",
+  "gravatar_id": "311c342bfd324eb9d3603222f7f36f24",
+  "url": "https://api.github.com/users/mathias",
+  "html_url": "https://github.com/mathias",
+  "followers_url": "https://api.github.com/users/mathias/followers",
+  "following_url": "https://api.github.com/users/mathias/following{/other_user}",
+  "gists_url": "https://api.github.com/users/mathias/gists{/gist_id}",
+  "starred_url": "https://api.github.com/users/mathias/starred{/owner}{/repo}",
+  "subscriptions_url": "https://api.github.com/users/mathias/subscriptions",
+  "organizations_url": "https://api.github.com/users/mathias/orgs",
+  "repos_url": "https://api.github.com/users/mathias/repos",
+  "events_url": "https://api.github.com/users/mathias/events{/privacy}",
+  "received_events_url": "https://api.github.com/users/mathias/received_events",
+  "type": "User",
+  "site_admin": false,
+  "company": "Bendyworks",
+  "blog": "http://blog.mattgauger.com",
+  "location": "Madison, WI",
+  "email": "matt.gauger@gmail.com",
+  "hireable": false,
+  "bio": "",
+  "public_repos": 111,
+  "public_gists": 56,
+  "followers": 54,
+  "following": 45,
+  "created_at": "2008-03-18T04:50:22Z",
+  "updated_at": "2014-01-06T03:11:19Z"
+}
