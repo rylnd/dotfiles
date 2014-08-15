@@ -3,13 +3,16 @@
 	ci = commit
 	co = checkout
 	cp = cherry-pick
+	put = push origin HEAD
 	fixup = !sh -c 'git commit -m \"fixup! $(git log -1 --format='\\''%s'\\'' $@)\"' -
 	squash = !sh -c 'git commit -m \"squash! $(git log -1 --format='\\''%s'\\'' $@)\"' -
 	ri = rebase --interactive
 	br = branch
+	brs = for-each-ref --sort=-committerdate --format="%(committerdate:relative)%09%(refname:short)" refs/heads
 	pruneremote = remote prune origin
 	tree = log --graph --oneline --decorate --color --all
 	tr = log --graph --oneline --decorate --color
+	blog = log --graph --pretty=format:'%Cred%h%Creset %C(yellow)%an%d%Creset %s %Cgreen(%cr)%Creset' --date=relative
 	unpushed = !"PROJ_BRANCH=$(git symbolic-ref HEAD | sed 's|refs/heads/||') && git log origin/$PROJ_BRANCH..HEAD"
 	unpulled = !"PROJ_BRANCH=$(git symbolic-ref HEAD | sed 's|refs/heads/||') && git fetch && git log HEAD..origin/$PROJ_BRANCH"
 	lol = log --oneline --graph --decorate
@@ -20,6 +23,7 @@
 	reauth = commit --amen --reset-author -CHEAD
 	redo = commit --amen -CHEAD
 	merge-clean = !sh -c '(git merge $@ > /tmp/git-output && cat /tmp/git-output) || (git merge --abort && echo \"Merge aborted.\" && exit 1) ' -
+	delete-merged = !sh -c '(git branch --merged | grep -v "\\*" | xargs -n1 git branch -d)' -
 [branch]
 	autosetuprebase = always
 [color]
@@ -40,6 +44,6 @@
 	autosquash = true
 [user]
 	name = Ryland Herrick
-	email = ryland@bendyworks.com
+	email = ryalnd@gmail.com
 [advice]
 	statusHints = false
