@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+dotfiles=($(find . -name '.*' -type f | sed 's|^\./||' ))
+
+for file in "${dotfiles[@]}"; do 
+  cmd="ln -s $(pwd)/$file $HOME/$file"
+  echo $cmd
+  eval $cmd
+  echo
+done

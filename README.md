@@ -1,7 +1,7 @@
 # rylnd/dotfiles [![Build Status](https://travis-ci.org/rylnd/dotfiles.png)](https://travis-ci.org/rylnd/dotfiles)
 A collection of scripts and commands that I use every day.
 
-##scripts/pair
+## scripts/pair
 Configures the git author/email for multiple developers when pair programming
 
 #### Setup (Recommended)
@@ -60,11 +60,17 @@ And check your current configuration:
 $ pair                  # Lists the current author/email
 ```
 
-## git/.gitconfig
-Enough said.
+## dotfiles
+The dotfiles that I actually use.
 
-## git/aliases
-Bash aliases related to git. Saves me from typing some characters.
+#### Setup
+Assuming you've cloned the repo:
+```bash
+cd path_to_repo
+./setup/dotfiles
+```
+will symlink the dotfiles to your home directory (but won't overwrite existing files).
+
 
 ## setup/
 Scripts to aid in the install/update process
