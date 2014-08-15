@@ -67,7 +67,7 @@ The dotfiles that I actually use.
 Assuming you've cloned the repo:
 ```bash
 cd path_to_repo
-./setup/dotfiles
+setup/dotfiles
 ```
 will symlink the dotfiles to your home directory (but won't overwrite existing files).
 
