@@ -1,0 +1,123 @@
+" map <silent> <C-s> :Vexplore<CR>
+" let g:netrw_browse_split = 4
+" let g:netrw_altv = 1
+" let g:netrw_banner = 0      " Don't show the netrw_banner
+" let g:netrw_liststyle = 3 " tree listing style
+
+autocmd User Rails    Rnavcommand sass app/stylesheets -suffix=.sass -default=partials/_page
+autocmd User Rails    Rnavcommand coffee app/coffee -suffix=.coffee
+autocmd User Rails    Rnavcommand cell app/cells
+autocmd User Rails    Rnavcommand cellview app/cells -glob=**/* -suffix=.html.haml
+
+set autoindent
+set backupdir=~/.vimbackupdir,~/tmp,~/,.
+set directory=~/.vimbackupdir,~/tmp,~/,.
+set expandtab
+set laststatus=2
+set listchars=tab:⇀\ ,trail:␠
+set list
+set hlsearch
+set ignorecase
+set matchpairs+=<:>
+set modeline
+set modelines=5
+set ruler
+set shiftwidth=2
+set showmatch
+set tabstop=2
+set tildeop
+set wildmode=longest,list,full
+set wildmenu
+set dictionary-=/usr/share/dict/words dictionary+=/usr/share/dict/words
+syntax on
+color vividchalk
+
+au! BufRead,BufNewFile *.rb
+au! BufRead,BufNewFile *.xml
+au BufNewFile,BufRead *.scss set filetype=scss
+
+" Run rake from Rails files
+autocmd User Rails nnoremap <buffer> <D-r> :<C-U>Rake<CR>
+autocmd User Rails nnoremap <buffer> <D-R> :<C-U>.Rake<CR>
+
+" find the current file
+map <silent> <C-s> :NERDTree<CR><C-w>l:NERDTreeFind<CR>
+
+" clear search
+nmap <silent> ,/ :nohlsearch<CR>
+
+" readline completion
+map <silent> <C-P> <Up>
+map <silent> <C-N> <Down>
+
+" navigate windows
+map <silent <C->h> :wincmd h<CR>
+map <silent> <C-Left> :wincmd h<CR>
+map <silent> <C-k> :wincmd k<CR>
+map <silent> <C-Up> :wincmd k<CR>
+map <silent> <C-j> :wincmd j<CR>
+map <silent> <C-Down> :wincmd j<CR>
+map <silent> <C-l> :wincmd l<CR>
+map <silent> <C-Right> :wincmd l<CR>
+
+" bubble text
+map <silent> <C-H> x<Left>P
+map <silent> <C-L> xp
+map <silent> <C-J> ddp
+map <silent> <C-K> ddkP
+
+" open tabs with command-<tab number>
+map <silent> <D-1> :tabn 1<CR>
+map <silent> <D-2> :tabn 2<CR>
+map <silent> <D-3> :tabn 3<CR>
+map <silent> <D-4> :tabn 4<CR>
+map <silent> <D-5> :tabn 5<CR>
+map <silent> <D-6> :tabn 6<CR>
+map <silent> <D-7> :tabn 7<CR>
+map <silent> <D-8> :tabn 8<CR>
+map <silent> <D-9> :tabn 9<CR>
+
+" Reindent xml pastes
+vmap <silent> <leader>x :!tidy -qi -raw -xml<CR>:se filetype=xml<CR>
+
+" abbreviations
+iabbrev bpry require 'pry'; binding.pry
+
+set visualbell
+set nu
+set nowrap
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Git (from joe)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:extradite_width = 60
+" Hide messy Ggrep output and copen automatically
+function! NonintrusiveGitGrep(term)
+  execute "copen"
+  " Map 't' to open selected item in new tab
+  execute "nnoremap <silent> <buffer> t <C-W><CR><C-W>T"
+  execute "silent! Ggrep " . a:term
+endfunction
+
+nnoremap <silent> <C-\> :call NonintrusiveGitGrep(expand("<cword>"))<CR>
+
+"Trim trailing whitespace
+command Trim %s/\s\+$//e
+
+" command! -nargs=1 GGrep call NonintrusiveGitGrep(<q-args>)
+" nmap <leader>gs :Gstatus<CR>
+" nmap <leader>gg :copen<CR>:GGrep
+" nmap <leader>gl :Extradite!<CR>
+" nmap <leader>gd :Gdiff<CR>
+" nmap <leader>gb :Gblame<CR>
+
+
+" NO ARROW KEYS
+" noremap  <Up>    ""
+" noremap! <Up>    <Esc>
+" noremap  <Down>  ""
+" noremap! <Down>  <Esc>
+" noremap  <Left>  ""
+" noremap! <Left>  <Esc>
+" noremap  <Right> ""
+" noremap! <Right> <Esc>

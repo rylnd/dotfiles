@@ -1,0 +1,13 @@
+--type-add=ruby=.haml,.prawn,.rake,.rsel,.yml
+--type-add=css=.sass,.scss,.less,.css
+--type-add=js=.coffee,.js.coffee
+--type-set=cucumber=.feature
+--type-set=tritium=.ts
+--ignore-dir=vendor
+--ignore-dir=doc
+--ignore-dir=tmp
+--ignore-dir=log
+--ignore-dir=coverage
+--ignore-dir=metrics
+--ignore-dir=production_data
+--ignore-dir=fixtures

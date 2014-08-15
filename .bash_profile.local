@@ -1,0 +1,84 @@
+# Append to history file
+shopt -s histappend
+
+# Store 10,000 history entries
+export HISTSIZE=10000
+# Don't store duplicates
+export HISTCONTROL=erasedups
+export RSPEC=true
+export AUTOFEATURE=true
+export RUBYOPT=rubygems
+export EDITOR=vim
+export VISUAL=vim
+export GEMDOC=$(\gem environment gemdir)/doc
+export LESS=FRX
+export LSCOLORS="gxfxcxdxbxegedabagacad"
+export CLICOLOR=1
+export DISPLAY=:0.0
+export LC_CTYPE=en_US.UTF-8
+export RI="--format ansi --width 80"
+
+export PGOPTIONS='-c client_min_messages=WARNING'
+export PSQL_EDITOR='vim -c"set syntax=sql"'
+
+export NODE_PATH="$NODE_PATH:$(brew --prefix)/lib/node_modules"
+
+PATH="$HOME/bin:/usr/local/sbin:/usr/local/mysql/bin:/usr/local/bin:$PATH"
+PATH="$PATH:$HOME/.cabal/bin"
+PATH="$PATH:/usr/local/lib/node_modules"
+PATH="/usr/local/heroku/bin:$PATH"
+PATH="$HOME/.rbenv/bin:$PATH"
+export PATH
+
+# Colours
+        RED="\[\033[0;31m\]"
+     YELLOW="\[\033[0;33m\]"
+      GREEN="\[\033[0;32m\]"
+       BLUE="\[\033[0;34m\]"
+  LIGHT_RED="\[\033[1;31m\]"
+LIGHT_GREEN="\[\033[1;32m\]"
+      WHITE="\[\033[1;37m\]"
+ LIGHT_GRAY="\[\033[0;37m\]"
+ COLOR_NONE="\[\e[0m\]"
+       GRAY="\[\033[1;30m\]"
+
+# Get the current git branch, if there is one
+parse_git_branch() {
+  \git rev-parse --git-dir &> /dev/null
+  git_status="$(git status 2> /dev/null)"
+  branch_pattern="^On branch ([^${IFS}]*)"
+  remote_pattern="Your branch is (.*) of"
+  diverge_pattern="Your branch and (.*) have diverged"
+  if [[ ! ${git_status}} =~ "nothing to commit" ]]; then
+    state="${RED}⚡"
+  fi
+  # add an else if or two here if you want to get more specific
+  if [[ ${git_status} =~ ${remote_pattern} ]]; then
+    if [[ ${BASH_REMATCH[1]} == "ahead" ]]; then
+      remote="${YELLOW}↑"
+    else
+      remote="${YELLOW}↓"
+    fi
+  fi
+  if [[ ${git_status} =~ ${diverge_pattern} ]]; then
+    remote="${YELLOW}↕"
+  fi
+  if [[ ${git_status} =~ ${branch_pattern} ]]; then
+    branch=${BASH_REMATCH[1]}
+    echo " (${branch})${remote}${state}"
+  fi
+}
+
+MYPS='$(echo -n "${PWD/#$HOME/~}" | awk -F "/" '"'"'{if (length($0) > 14) { if (NF>4) print $1 "/" $2 "/…/" $(NF-1) "/" $NF; else if (NF>3) print $1 "/" $2 "/…/" $NF; else print $1 "/…/" $NF; } else print $0;}'"'"')'
+
+prompt_func() {
+  previous_return_value=$?;
+  prompt="${TITLEBAR}${LIGHT_GRAY}${MYPS}${YELLOW}$(parse_git_branch)${COLOR_NONE}"
+  if [[ $previous_return_value -eq 0 ]]; then
+    PS1="${GREEN}➜ ${COLOR_NONE}${prompt}${GREEN} \$${COLOR_NONE} "
+  else
+    PS1="${RED}➜ ${COLOR_NONE}${prompt}${RED} \$${COLOR_NONE} "
+  fi
+}
+
+PROMPT_COMMAND=prompt_func
