@@ -93,4 +93,8 @@ alias becr='c; yn bundle exec rake'
 alias becree='c; yn_ree bundle exec rake'
 alias berake='bundle exec rake'
 
+# Node commands
+alias npm-exec='PATH=$(npm bin):$PATH'
+alias ne='npm-exec'
+
 [ ! -f "$HOME/.bash_aliases.local" ] || . "$HOME/.bash_aliases.local"
