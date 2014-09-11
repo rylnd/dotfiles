@@ -2,10 +2,10 @@ pair() {
   local name names email pair_name pair_email user usernames github_response status
 
   #### CONFIGURATION #####################################################
-  local PAIR_EMAIL_USERNAME='dev'
-  local PAIR_EMAIL_DOMAIN='bendyworks.com'
+  local PAIR_EMAIL_USERNAME='pair'
+  local PAIR_EMAIL_DOMAIN='adorable.io'
 
-  # Bendyworkers:
+  # People:
   local begriffs='Joe Nelson'
   local bendycode='Stephen Anderson'
   local bigtiger='Jim Remsik'
@@ -17,13 +17,12 @@ pair() {
   local rylnd='Ryland Herrick'
   local twopoint718='Chris Wilson'
   local whblondeau='Bill Blondeau'
-
-  # Other:
   local jcarley='Jeff Carley'
   local angelic='Angel N. Sciortino'
   local glynnis='Glynnis Ritchie'
   local jdpace='Jared Pace'
   local m5rk='Mark McEahern'
+  local itg='Kevin Altman'
   #### END CONFIGURATION ##################################################
 
   set_session_vars() {
