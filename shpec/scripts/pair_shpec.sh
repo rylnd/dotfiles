@@ -50,9 +50,9 @@ describe "pair"
       pair -u &> /dev/null
       assert blank "$GIT_AUTHOR_EMAIL"
 
-    it "uses dev@bendyworks.com in the email"
+    it "uses pair@adorable.io in the email"
       pair rylnd &> /dev/null
-      assert match "$GIT_AUTHOR_EMAIL" "dev.*bendyworks\.com"
+      assert match "$GIT_AUTHOR_EMAIL" "pair.*adorable\.io"
 
     it "sets multiple usernames in the email"
       pair rylnd bendycode &> /dev/null
