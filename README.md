@@ -19,7 +19,7 @@ setup/pair upgrade
 #### Setup (Automatic)
 For a one-off install, simply paste the following into your command line:
 ```bash
-curl -s https://raw.github.com/rylnd/dotfiles/master/setup/pair | bash -s install
+curl -sL https://raw.github.com/rylnd/dotfiles/master/setup/pair | bash -s install
 ```
 
 #### Setup (Manual)
