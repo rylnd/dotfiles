@@ -32,12 +32,6 @@ alias :::::='cd ../../../../..;l;'
 alias ::::='cd ../../../..;l;'
 alias :::='cd ../../..;l;'
 alias ::='cd ../..;l;'
-alias ~='cd ~;l;'
-alias b='cd -;l;'
-alias c=clear
-alias cddev='cd ~/dev;l;'
-alias d='ls -bF'
-alias dev='cd ~/dev; cd'
 alias l='ls -aFG'
 alias ll='l -l'
 
