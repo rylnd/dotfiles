@@ -33,7 +33,7 @@ alias ::::='cd ../../../..;l;'
 alias :::='cd ../../..;l;'
 alias ::='cd ../..;l;'
 alias l='ls -aFG'
-alias ll='l -l'
+alias ll='l -lh'
 
 # Git Commands
 alias gbr='git branch'
