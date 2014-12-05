@@ -111,14 +111,6 @@ nnoremap <silent> <C-\> :call NonintrusiveGitGrep(expand("<cword>"))<CR>
 "Trim trailing whitespace
 command Trim %s/\s\+$//e
 
-" command! -nargs=1 GGrep call NonintrusiveGitGrep(<q-args>)
-" nmap <leader>gs :Gstatus<CR>
-" nmap <leader>gg :copen<CR>:GGrep
-" nmap <leader>gl :Extradite!<CR>
-" nmap <leader>gd :Gdiff<CR>
-" nmap <leader>gb :Gblame<CR>
-
-
 " NO ARROW KEYS
 " noremap  <Up>    ""
 " noremap! <Up>    <Esc>
