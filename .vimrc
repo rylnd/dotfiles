@@ -41,6 +41,7 @@ Bundle 'guns/vim-clojure-static'
 " formatting
 Bundle 'godlygeek/tabular'
 Bundle 'jgdavey/vim-blockle'
+runtime! macros/matchit.vim " required by blockle
 Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-speeddating'
 Bundle 'tpope/vim-surround'
