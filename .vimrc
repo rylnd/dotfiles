@@ -23,6 +23,8 @@ Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-markdown'
 Bundle 'tdesikan/vim-tritium'
 Bundle 'slim-template/vim-slim'
+Bundle 'digitaltoad/vim-jade'
+Bundle 'wavded/vim-stylus'
 Bundle 'rylnd/vim-javascript-syntax'
 
 " ruby
