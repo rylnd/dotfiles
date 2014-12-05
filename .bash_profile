@@ -15,3 +15,6 @@ eval "$(rbenv init -)"
 # define the pair function
 source "$HOME/.pair"
 pair -q
+
+# define the sd function
+source '/Users/ryland/code/github/sd/sd'
