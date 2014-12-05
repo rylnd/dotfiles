@@ -26,6 +26,7 @@ Bundle 'slim-template/vim-slim'
 Bundle 'digitaltoad/vim-jade'
 Bundle 'wavded/vim-stylus'
 Bundle 'rylnd/vim-javascript-syntax'
+Bundle 'wting/rust'
 
 " ruby
 Bundle 'tpope/vim-endwise'
