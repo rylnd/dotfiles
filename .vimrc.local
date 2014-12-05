@@ -9,6 +9,8 @@ autocmd User Rails    Rnavcommand coffee app/coffee -suffix=.coffee
 autocmd User Rails    Rnavcommand cell app/cells
 autocmd User Rails    Rnavcommand cellview app/cells -glob=**/* -suffix=.html.haml
 
+let g:airline_powerline_fonts = 1
+
 set autoindent
 set backupdir=~/.vimbackupdir,~/tmp,~/,.
 set directory=~/.vimbackupdir,~/tmp,~/,.

@@ -89,7 +89,7 @@ Bundle 'wgibbs/vim-irblack'
 filetype plugin indent on
 
 set visualbell
-set guifont=Source\ Code\ Pro:h13
+set guifont=Source\ Code\ Pro\ for\ Powerline:h13
 set guioptions-=T guioptions-=e guioptions-=L guioptions-=r
 set shell=bash
 
