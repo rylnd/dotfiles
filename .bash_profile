@@ -10,8 +10,6 @@ if [[ -e "$(brew --prefix)/etc/bash_completion" ]]; then
   source $(brew --prefix)/etc/bash_completion
 fi
 
-eval "$(rbenv init -)"
-
 # define the pair function
 source "$HOME/.pair"
 pair -q

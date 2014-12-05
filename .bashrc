@@ -6,3 +6,6 @@ bind '"\C-w": backward-kill-word'
 [ -z "$PS1" ] || stty -ixon
 
 [ ! -f "$HOME/.bashrc.local" ] || . "$HOME/.bashrc.local"
+
+# rbenv
+eval "$(rbenv init -)"
