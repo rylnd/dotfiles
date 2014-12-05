@@ -14,6 +14,7 @@ Bundle 'gmarik/vundle'
 " general vim/commands
 Bundle 'tpope/vim-pathogen'
 Bundle 'tpope/vim-repeat'
+Bundle 'terryma/vim-multiple-cursors'
 
 " syntax
 Bundle 'kchmck/vim-coffee-script'
