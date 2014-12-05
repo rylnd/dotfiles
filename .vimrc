@@ -56,7 +56,7 @@ Bundle 'duff/vim-bufonly'
 Bundle 'mileszs/ack.vim'
 Bundle 'kien/ctrlp.vim'
 Bundle 'ervandew/supertab'
-Bundle 'Lokaltog/vim-powerline'
+Bundle 'bling/vim-airline'
 
 " tags
 Bundle 'tpope/vim-ragtag'
