@@ -89,6 +89,7 @@ vmap <silent> <leader>x :!tidy -qi -raw -xml<CR>:se filetype=xml<CR>
 
 " abbreviations
 iabbrev bpry require 'pry'; binding.pry
+iabbrev rpry require 'pry-remote'; binding.remote_pry
 
 set visualbell
 set nu
