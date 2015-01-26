@@ -24,6 +24,7 @@ alias psack='ps aux | ack'
 alias psgrep='ps aux | grep'
 alias v='mvim'
 alias v.='mvim .'
+alias notes='vim /Users/ryland/Dropbox/writing/notes'
 
 # Directory Navigation
 alias ...='cd ../..;l;'
