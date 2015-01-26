@@ -12,6 +12,7 @@ alias myup='/usr/local/Cellar/mysql/5.5.27/support-files/mysql.server start'
 alias mydown='/usr/local/Cellar/mysql/5.5.27/support-files/mysql.server stop'
 alias apup='sudo apachectl start'
 alias apdown='sudo apachectl stop'
+alias repow='powify server stop && powify server start'
 
 # Screen
 alias sn='screen -aAU'
