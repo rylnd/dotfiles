@@ -88,6 +88,8 @@ alias be='bundle exec'
 alias becr='c; yn bundle exec rake'
 alias becree='c; yn_ree bundle exec rake'
 alias berake='bundle exec rake'
+alias bo='bundle open'
+alias mbo='BUNDLER_EDITOR=mvim bundle open'
 
 # Node commands
 alias npm-exec='PATH=$(npm bin):$PATH'
