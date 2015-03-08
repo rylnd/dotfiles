@@ -21,7 +21,7 @@ export RI="--format ansi --width 80"
 export PGOPTIONS='-c client_min_messages=WARNING'
 export PSQL_EDITOR='vim -c"set syntax=sql"'
 
-export NODE_PATH="$NODE_PATH:$(brew --prefix)/lib/node_modules"
+export NODE_PATH="$(npm root -g)"
 
 PATH="$HOME/bin:/usr/local/sbin:/usr/local/mysql/bin:/usr/local/bin:$PATH"
 PATH="$PATH:$HOME/.cabal/bin"
