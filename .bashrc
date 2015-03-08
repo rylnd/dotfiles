@@ -9,3 +9,7 @@ bind '"\C-w": backward-kill-word'
 
 # rbenv
 eval "$(rbenv init -)"
+
+# nvm
+export NVM_DIR=~/.nvm
+source $(brew --prefix nvm)/nvm.sh
