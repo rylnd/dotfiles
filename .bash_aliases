@@ -77,7 +77,7 @@ alias surplus='gem list | ack ","'
 # Rails 2.3
 alias cr='c; yn rake'
 alias deploy='cap_deploy.sh'
-alias rakedbtestkill='RAILS_ENV=test rake db:drop && RAILS_ENV=test rake db:create && rake db:test:prepare' 
+alias rakedbtestkill='RAILS_ENV=test rake db:drop && RAILS_ENV=test rake db:create && rake db:test:prepare'
 alias rb='ruby'
 alias testenv='RAILS_ENV=test'
 
