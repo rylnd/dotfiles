@@ -109,6 +109,9 @@ endfunction
 
 nnoremap <silent> <C-\> :call NonintrusiveGitGrep(expand("<cword>"))<CR>
 
+"Trim trailing whitespace
+command Trim %s/\s\+$//e
+
 " Autoclear trailing white-space and save cursor position
 fun! <SID>StripTrailingWhitespaces()
   let l = line(".")
