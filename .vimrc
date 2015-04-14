@@ -1,91 +1,92 @@
 set nocompatible
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-" BUNDLES
-" Bundle 'adamlowe/vim-slurper'
-" Bundle 'tpope/vim-abolish'
-" Bundle 'scrooloose/nerdcommenter'
-" Bundle 'vim-scripts/bufkill.vim'
-" Bundle 'pangloss/vim-javascript'
-Bundle 'gmarik/vundle'
+" Plugins
+" Plugin 'adamlowe/vim-slurper'
+" Plugin 'tpope/vim-abolish'
+" Plugin 'scrooloose/nerdcommenter'
+" Plugin 'vim-scripts/bufkill.vim'
+" Plugin 'pangloss/vim-javascript'
+Plugin 'gmarik/vundle'
 
 " general vim/commands
-Bundle 'tpope/vim-pathogen'
-Bundle 'tpope/vim-repeat'
-Bundle 'terryma/vim-multiple-cursors'
+Plugin 'tpope/vim-pathogen'
+Plugin 'tpope/vim-repeat'
+Plugin 'terryma/vim-multiple-cursors'
 
 " syntax
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'leshill/vim-json'
-Bundle 'tpope/vim-haml'
-Bundle 'tpope/vim-markdown'
-Bundle 'tdesikan/vim-tritium'
-Bundle 'slim-template/vim-slim'
-Bundle 'digitaltoad/vim-jade'
-Bundle 'wavded/vim-stylus'
-Bundle 'rylnd/vim-javascript-syntax'
-Bundle 'wting/rust'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'leshill/vim-json'
+Plugin 'tpope/vim-haml'
+Plugin 'tpope/vim-markdown'
+Plugin 'tdesikan/vim-tritium'
+Plugin 'slim-template/vim-slim'
+Plugin 'digitaltoad/vim-jade'
+Plugin 'wavded/vim-stylus'
+Plugin 'rylnd/vim-javascript-syntax'
+Plugin 'wting/rust'
 
 " ruby
-Bundle 'tpope/vim-endwise'
-Bundle 'vim-ruby/vim-ruby'
+Plugin 'tpope/vim-endwise'
+Plugin 'vim-ruby/vim-ruby'
 
 " clojure
-Bundle 'tpope/vim-fireplace'
-Bundle 'tpope/vim-classpath'
-Bundle 'guns/vim-clojure-static'
+Plugin 'tpope/vim-fireplace'
+Plugin 'tpope/vim-classpath'
+Plugin 'guns/vim-clojure-static'
 " filetype off
 
 " formatting
-Bundle 'godlygeek/tabular'
-Bundle 'jgdavey/vim-blockle'
+Plugin 'godlygeek/tabular'
+Plugin 'jgdavey/vim-blockle'
 runtime! macros/matchit.vim " required by blockle
-Bundle 'tpope/vim-commentary'
-Bundle 'tpope/vim-speeddating'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-speeddating'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-unimpaired'
 
 " linting
-Bundle 'walm/jshint.vim'
+Plugin 'walm/jshint.vim'
 
 " files/search/buffers
-Bundle 'scrooloose/nerdtree'
-Bundle 'duff/vim-bufonly'
-Bundle 'mileszs/ack.vim'
-Bundle 'kien/ctrlp.vim'
-Bundle 'ervandew/supertab'
-Bundle 'bling/vim-airline'
+Plugin 'scrooloose/nerdtree'
+Plugin 'duff/vim-bufonly'
+Plugin 'mileszs/ack.vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'ervandew/supertab'
+Plugin 'bling/vim-airline'
 
 " tags
-Bundle 'tpope/vim-ragtag'
+Plugin 'tpope/vim-ragtag'
 
 " git
-" Bundle 'gregsexton/gitv'
-" Bundle 'tpope/vim-git'
-Bundle 'tpope/vim-fugitive'
+" Plugin 'gregsexton/gitv'
+" Plugin 'tpope/vim-git'
+Plugin 'tpope/vim-fugitive'
 
 " rails
-Bundle 'tpope/vim-bundler'
-Bundle 'tpope/vim-cucumber'
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-rake'
+Plugin 'tpope/vim-bundler'
+Plugin 'tpope/vim-cucumber'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-rake'
 
 " tmux
-Bundle 'benmills/vimux'
-Bundle 'jgdavey/vim-turbux'
+Plugin 'benmills/vimux'
+Plugin 'jgdavey/vim-turbux'
 
 " colorschemes
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'endel/vim-github-colorscheme'
-Bundle 'jgdavey/vim-railscasts'
-Bundle 'jpo/vim-railscasts-theme'
-Bundle 'therubymug/vim-pyte'
-Bundle 'tpope/vim-vividchalk'
-Bundle 'croaker/mustang-vim'
-Bundle 'wgibbs/vim-irblack'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'endel/vim-github-colorscheme'
+Plugin 'jgdavey/vim-railscasts'
+Plugin 'jpo/vim-railscasts-theme'
+Plugin 'therubymug/vim-pyte'
+Plugin 'tpope/vim-vividchalk'
+Plugin 'croaker/mustang-vim'
+Plugin 'wgibbs/vim-irblack'
 
+call vundle#end()
 filetype plugin indent on
 
 set visualbell
