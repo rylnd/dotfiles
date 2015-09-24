@@ -96,4 +96,12 @@ alias mbo='BUNDLER_EDITOR=mvim bundle open'
 alias npm-exec='PATH=$(npm bin):$PATH'
 alias ne='npm-exec'
 
+# docker commands
+alias b2d='boot2docker'
+alias dcp='docker-compose'
+alias dprune='docker rmi $(docker images -q --filter "dangling=true")'
+alias dcredo='yes | dcp rm && dcp build && dcp up'
+alias dcn='dcp build --no-cache'
+alias dcrn='yes | dcp rm && dcn && dcp up'
+
 [ ! -f "$HOME/.bash_aliases.local" ] || . "$HOME/.bash_aliases.local"
