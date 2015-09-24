@@ -4,7 +4,6 @@
 --type-set=cucumber=.feature
 --type-set=tritium=.ts
 --ignore-dir=vendor
---ignore-dir=doc
 --ignore-dir=tmp
 --ignore-dir=log
 --ignore-dir=coverage
