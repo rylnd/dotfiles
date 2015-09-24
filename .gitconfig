@@ -49,3 +49,5 @@
 	email = ryalnd@gmail.com
 [advice]
 	statusHints = false
+[credential]
+	helper = osxkeychain
