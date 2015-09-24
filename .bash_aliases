@@ -12,6 +12,7 @@ alias mydown='mysql.server stop'
 alias apup='sudo apachectl start'
 alias apdown='sudo apachectl stop'
 alias repow='powify server stop && powify server start'
+alias serve='python -m SimpleHTTPServer'
 
 # Screen
 alias sn='screen -aAU'
