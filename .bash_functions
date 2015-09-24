@@ -50,3 +50,12 @@ older_sha() {
     return 1
   fi
 }
+
+dcsh() {
+  local container_id="$(docker ps | grep "$1_web" | cut -d\  -f1)"
+  if [[ -z "$container_id" ]]; then
+    container_id="$(docker ps | grep "$1" | cut -d\  -f1)"
+  fi
+
+  docker exec -it $container_id bash
+}
