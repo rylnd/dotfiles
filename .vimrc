@@ -26,6 +26,7 @@ Plugin 'slim-template/vim-slim'
 Plugin 'digitaltoad/vim-jade'
 Plugin 'wavded/vim-stylus'
 Plugin 'jelera/vim-javascript-syntax'
+Plugin 'fatih/vim-go'
 Plugin 'wting/rust'
 
 " ruby
