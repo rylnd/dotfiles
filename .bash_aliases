@@ -104,4 +104,7 @@ alias dcredo='yes | dcp rm && dcp build && dcp up'
 alias dcn='dcp build --no-cache'
 alias dcrn='yes | dcp rm && dcn && dcp up'
 
+# copy uuid to clipboard
+alias cuuid='uuid | tr -d "\n" | pbcopy'
+
 [ ! -f "$HOME/.bash_aliases.local" ] || . "$HOME/.bash_aliases.local"
