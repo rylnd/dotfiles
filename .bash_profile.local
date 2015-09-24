@@ -22,12 +22,16 @@ export PGOPTIONS='-c client_min_messages=WARNING'
 export PSQL_EDITOR='vim -c"set syntax=sql"'
 
 export NODE_PATH="$(npm root -g)"
+export GOPATH="$HOME/.go"
+export GOBIN="$GOPATH/bin"
 
 PATH="$HOME/bin:/usr/local/sbin:/usr/local/mysql/bin:/usr/local/bin:$PATH"
 PATH="$PATH:$HOME/.cabal/bin"
 PATH="$PATH:/usr/local/lib/node_modules"
 PATH="/usr/local/heroku/bin:$PATH"
 PATH="$HOME/.rbenv/bin:$PATH"
+PATH="$PATH:$GOPATH/bin"
+
 export PATH
 
 # Colours
