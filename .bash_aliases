@@ -97,6 +97,9 @@ alias mbo='BUNDLER_EDITOR=mvim bundle open'
 alias npm-exec='PATH=$(npm bin):$PATH'
 alias ne='npm-exec'
 
+# Go commands
+alias gocover='goop go test -coverprofile=cover.out ./...; goop go tool cover -html=cover.out'
+
 # docker commands
 alias b2d='boot2docker'
 alias dcp='docker-compose'
