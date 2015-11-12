@@ -26,6 +26,7 @@ alias v='mvim'
 alias v.='mvim .'
 alias notes='vim /Users/ryland/Dropbox/writing/notes'
 alias mnotes='mvim /Users/ryland/Dropbox/writing/notes'
+alias so='source ~/.bash_profile'
 
 # Directory Navigation
 alias ...='cd ../..;l;'
