@@ -16,6 +16,8 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\.exe$\|\.so$\|\.dat$\|\.DS_Store$\|\.gz$'
   \ }
 
+let g:go_fmt_command = "goimports"
+
 set autoindent
 set backupdir=~/.vimbackupdir,~/tmp,~/,.
 set directory=~/.vimbackupdir,~/tmp,~/,.

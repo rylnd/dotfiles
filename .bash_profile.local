@@ -22,7 +22,7 @@ export PGOPTIONS='-c client_min_messages=WARNING'
 export PSQL_EDITOR='vim -c"set syntax=sql"'
 
 export NODE_PATH="$(npm root -g)"
-export GOPATH="$HOME/.go"
+export GOPATH="$HOME/go"
 export GOBIN="$GOPATH/bin"
 
 PATH="$HOME/bin:/usr/local/sbin:/usr/local/mysql/bin:/usr/local/bin:$PATH"
