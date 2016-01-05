@@ -1,3 +1,40 @@
+# Get the current git branch, if there is one
+parse_git_branch() {
+  \git rev-parse --git-dir &> /dev/null
+  git_status="$(git status 2> /dev/null)"
+  branch_pattern="^On branch ([^${IFS}]*)"
+  remote_pattern="Your branch is (.*) of"
+  diverge_pattern="Your branch and (.*) have diverged"
+  if [[ ! ${git_status}} =~ "nothing to commit" ]]; then
+    state="${RED}⚡"
+  fi
+  # add an else if or two here if you want to get more specific
+  if [[ ${git_status} =~ ${remote_pattern} ]]; then
+    if [[ ${BASH_REMATCH[1]} == "ahead" ]]; then
+      remote="${YELLOW}↑"
+    else
+      remote="${YELLOW}↓"
+    fi
+  fi
+  if [[ ${git_status} =~ ${diverge_pattern} ]]; then
+    remote="${YELLOW}↕"
+  fi
+  if [[ ${git_status} =~ ${branch_pattern} ]]; then
+    branch=${BASH_REMATCH[1]}
+    echo " (${branch})${remote}${state}"
+  fi
+}
+
+prompt_func() {
+  previous_return_value=$?;
+  prompt="${TITLEBAR}${LIGHT_GRAY}${MYPS}${YELLOW}$(parse_git_branch)${COLOR_NONE}"
+  if [[ $previous_return_value -eq 0 ]]; then
+    PS1="${GREEN}➜ ${COLOR_NONE}${prompt}${GREEN} \$${COLOR_NONE} "
+  else
+    PS1="${RED}➜ ${COLOR_NONE}${prompt}${RED} \$${COLOR_NONE} "
+  fi
+}
+
 turnips() {
   args=(${@:-'*'})
   args=("${args[@]/#/-o -iname }")
