@@ -24,4 +24,4 @@ export NVM_DIR=~/.nvm
 source $(brew --prefix nvm)/nvm.sh
 
 
-[ ! -f "$HOME/.bashrc.local" ] || source "$HOME/.bashrc.local"
+[ ! -f "$HOME/.bash_env" ] || source "$HOME/.bash_env"
