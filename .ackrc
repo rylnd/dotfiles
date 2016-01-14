@@ -10,3 +10,8 @@
 --ignore-dir=metrics
 --ignore-dir=production_data
 --ignore-dir=fixtures
+
+# vi/vim swap files
+--ignore-file=match:/[._].*\.swp$/
+# dump files
+--ignore-file=match:/dump$/
