@@ -98,7 +98,8 @@ dcsh() {
 }
 
 gh() {
-  local path="$(git config --get remote.origin.url | sed -E 's/git@|.git//g' | sed 's/:/\//')"
+  local remote="${1:-origin}"
+  local path="$(git config --get remote.${remote}.url | sed -E 's/git@|.git//g' | sed 's/:/\//')"
 
   open "https://$path"
 }
