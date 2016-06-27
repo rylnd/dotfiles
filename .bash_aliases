@@ -103,11 +103,13 @@ alias gocover='goop go test -coverprofile=cover.out ./...; goop go tool cover -h
 
 # docker commands
 alias b2d='boot2docker'
-alias dcp='docker-compose'
-alias dprune='docker rmi $(docker images -q --filter "dangling=true")'
-alias dcredo='yes | dcp rm && dcp build && dcp up'
 alias dcn='dcp build --no-cache'
+alias dcp='docker-compose'
+alias dcredo='yes | dcp rm && dcp build && dcp up'
 alias dcrn='yes | dcp rm && dcn && dcp up'
+alias de='DOCKER_IP=$(docker-machine ip base)'
+alias dm='docker-machine'
+alias dprune='docker rmi $(docker images -q --filter "dangling=true")'
 
 # copy uuid to clipboard
 alias cuuid='uuid | tr -d "\n" | pbcopy'
