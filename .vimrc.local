@@ -114,6 +114,9 @@ nnoremap <silent> <C-\> :call NonintrusiveGitGrep(expand("<cword>"))<CR>
 "Trim trailing whitespace
 command Trim %s/\s\+$//e
 
+"Convert 1.8 hashes to 1.9 syntax
+command HConvert %s/:\([^=,'"]*\) =>/\1:/g
+
 " Autoclear trailing white-space and save cursor position
 fun! <SID>StripTrailingWhitespaces()
   let l = line(".")
