@@ -74,8 +74,8 @@ Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-rake'
 
 " tmux
-Plugin 'benmills/vimux'
-Plugin 'jgdavey/vim-turbux'
+" Plugin 'benmills/vimux'
+" Plugin 'jgdavey/vim-turbux'
 
 " colorschemes
 Plugin 'altercation/vim-colors-solarized'
