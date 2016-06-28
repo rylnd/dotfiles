@@ -108,3 +108,13 @@ mopen() {
   local url="$1"
   /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --app="$url"
 }
+
+jdiff() {
+  local branch="${1:-develop}"
+  git diff-tree --no-commit-id --name-only -r "$(git merge-base ${branch} HEAD)" HEAD
+}
+
+gdiff() {
+  local branch="${1:-develop}"
+  git diff "$(git merge-base ${branch} HEAD)" HEAD
+}

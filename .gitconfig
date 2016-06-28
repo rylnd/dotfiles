@@ -26,8 +26,6 @@
 	merge-clean = !sh -c '(git merge $@ > /tmp/git-output && cat /tmp/git-output) || (git merge --abort && echo \"Merge aborted.\" && exit 1) ' -
 	delete-merged = !sh -c '(git fetch -p --all && git branch --merged | grep -v "\\*" | grep -v 'master' | xargs -n1 git branch -d)' -
 	bn = !"git name-rev HEAD --name-only | tr -d \"\n\" | pbcopy && echo $(git name-rev HEAD --name-only)"
-	gf = !sh -c 'git diff-tree --no-commit-id --name-only -r $(git merge-base develop HEAD) HEAD'
-	df = !sh -c 'git diff $(git merge-base develop HEAD) HEAD'
 [branch]
 	autosetuprebase = always
 [color]
