@@ -116,10 +116,12 @@ mopen() {
 
 jdiff() {
   local branch="${1:-develop}"
-  git diff-tree --no-commit-id --name-only -r "$(git merge-base ${branch} HEAD)" HEAD
+  local common_parent="$(git merge-base ${branch} HEAD)"
+  git diff-tree --no-commit-id --name-only -r "${common_parent}" HEAD
 }
 
 gdiff() {
   local branch="${1:-develop}"
-  git diff "$(git merge-base ${branch} HEAD)" HEAD
+  local common_parent="$(git merge-base ${branch} HEAD)"
+  git diff "${common_parent}" HEAD
 }
