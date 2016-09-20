@@ -106,14 +106,14 @@ set nowrap
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:extradite_width = 60
 " Hide messy Ggrep output and copen automatically
-function! NonintrusiveGitGrep(term)
+function! NonintrusiveAck(term)
   execute "copen"
   " Map 't' to open selected item in new tab
   execute "nnoremap <silent> <buffer> t <C-W><CR><C-W>T"
-  execute "silent! Ggrep " . a:term
+  execute "silent! Ack " . a:term
 endfunction
 
-nnoremap <silent> <C-\> :call NonintrusiveGitGrep(expand("<cword>"))<CR>
+nnoremap <silent> <C-\> :call NonintrusiveAck(expand("<cword>"))<CR>
 
 "Trim trailing whitespace
 command Trim %s/\s\+$//e
