@@ -14,16 +14,18 @@ alias apdown='sudo apachectl stop'
 alias repow='powify server stop && powify server start'
 alias serve='python -m SimpleHTTPServer'
 
-# Screen
+# command enhancements
 alias sn='screen -aAU'
+alias v='mvim'
+alias v.='mvim .'
+alias vi='mvim -v'
+alias vim='mvim -v'
 
 # Bash Commands
 alias callme='sudo su -'
 alias please=sudo
 alias psack='ps aux | ack'
 alias psgrep='ps aux | grep'
-alias v='mvim'
-alias v.='mvim .'
 alias notes='vim /Users/ryland/Dropbox/writing/notes'
 alias mnotes='mvim /Users/ryland/Dropbox/writing/notes'
 alias so='source ~/.bash_profile'
