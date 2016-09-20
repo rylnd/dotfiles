@@ -18,6 +18,10 @@ let g:ctrlp_custom_ignore = {
 
 let g:go_fmt_command = "goimports"
 
+" markdown
+let vim_markdown_preview_github = 1
+let vim_markdown_preview_hotkey = '<C-m>'
+
 set autoindent
 set backupdir=~/.vimbackupdir,~/tmp,~/,.
 set directory=~/.vimbackupdir,~/tmp,~/,.

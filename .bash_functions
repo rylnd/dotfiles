@@ -57,12 +57,6 @@ jsm() {
   $command $args
 }
 
-md() {
-  cd ~/ry/md/ > /dev/null
-  ./markdown.sh $1
-  cd - > /dev/null
-}
-
 newer_sha() {
   alias log_list='git log --format=%H'
   local branch="$(git rev-parse --abbrev-ref HEAD)"

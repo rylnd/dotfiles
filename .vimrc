@@ -77,6 +77,9 @@ Plugin 'tpope/vim-rake'
 " Plugin 'benmills/vimux'
 " Plugin 'jgdavey/vim-turbux'
 
+" markdown
+Plugin 'JamshedVesuna/vim-markdown-preview'
+
 " colorschemes
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'endel/vim-github-colorscheme'
