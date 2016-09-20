@@ -82,6 +82,9 @@ Plugin 'tpope/vim-rake'
 " markdown
 Plugin 'JamshedVesuna/vim-markdown-preview'
 
+" layout
+Plugin 'junegunn/goyo.vim'
+
 " colorschemes
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'endel/vim-github-colorscheme'
