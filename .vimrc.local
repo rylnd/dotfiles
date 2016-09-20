@@ -22,6 +22,15 @@ let g:go_fmt_command = "goimports"
 let vim_markdown_preview_github = 1
 let vim_markdown_preview_hotkey = '<C-m>'
 
+" search
+if executable('ag')
+  " Use ag for :Ack
+  let g:ackprg = 'ag --vimgrep'
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor -g ""'
+endif
+
 set autoindent
 set backupdir=~/.vimbackupdir,~/tmp,~/,.
 set directory=~/.vimbackupdir,~/tmp,~/,.
