@@ -27,7 +27,9 @@ Plugin 'digitaltoad/vim-jade'
 Plugin 'wavded/vim-stylus'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'fatih/vim-go'
-Plugin 'wting/rust'
+Plugin 'kylef/apiblueprint.vim'
+Plugin 'rust-lang/rust.vim'
+Plugin 'elixir-lang/vim-elixir'
 
 " ruby
 Plugin 'tpope/vim-endwise'
