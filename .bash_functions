@@ -98,6 +98,17 @@ gh() {
   open "https://$path"
 }
 
+multifile () {
+  local filename=$(basename "$1")
+  local ext="${filename##*.}"
+  filename="${filename%.*}"
+
+  for((i=0;i<201;i++)); do
+    echo "Copying $1 to $filename$i.$ext"
+    cp "$1" "$filename$i.$ext"
+  done
+}
+
 mopen() {
   local url="$1"
   /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --app="$url"
