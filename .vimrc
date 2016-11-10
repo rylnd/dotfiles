@@ -34,6 +34,7 @@ Plugin 'elixir-lang/vim-elixir'
 " ruby
 Plugin 'tpope/vim-endwise'
 Plugin 'vim-ruby/vim-ruby'
+Plugin 'rorymckinley/vim-rubyhash'
 
 " clojure
 Plugin 'tpope/vim-fireplace'
