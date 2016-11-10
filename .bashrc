@@ -26,6 +26,10 @@ eval "$(rbenv init -)"
 export NVM_DIR=~/.nvm
 source $(brew --prefix nvm)/nvm.sh
 
+# docker-machine
+if [[ "$(docker-machine status base)" = "Running" ]]; then
+  eval "$(docker-machine env base)"
+fi
 
 [ ! -f "$HOME/.bash_env" ] || source "$HOME/.bash_env"
 [ ! -f "$HOME/.bash_env.local" ] || source "$HOME/.bash_env.local"
