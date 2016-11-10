@@ -10,6 +10,7 @@ stty -ixon
 [ ! -f "$HOME/.bash_aliases" ] || source "$HOME/.bash_aliases"
 [ ! -f "$HOME/.bash_functions" ] || source "$HOME/.bash_functions"
 [ ! -f "$(brew --prefix)/etc/bash_completion" ] || source "$(brew --prefix)/etc/bash_completion"
+[ ! -f "$HOME/.iterm2_shell_integration.bash" ] || source "$HOME/.iterm2_shell_integration.bash"
 
 # define the pair function
 source "$HOME/.pair"
