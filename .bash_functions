@@ -91,6 +91,12 @@ dcsh() {
   docker exec -it $container_id bash
 }
 
+dreddd() {
+  local port="${1:-3030}"
+
+  dredd ./apiary.apib "http://localhost:${port}"
+}
+
 gh() {
   local remote="${1:-origin}"
   local path="$(git config --get remote.${remote}.url | sed -E 's/git@|\.git//g' | sed 's/:/\//')"
