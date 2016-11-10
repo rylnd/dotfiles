@@ -103,6 +103,9 @@ alias ne='npm-exec'
 # Go commands
 alias gocover='goop go test -coverprofile=cover.out ./...; goop go tool cover -html=cover.out'
 
+# sails commands
+alias smredo='ne sails-migrations db:drop; ne sails-migrations db:create; ne sails-migrations migrate'
+
 # docker commands
 alias b2d='boot2docker'
 alias dcn='dcp build --no-cache'
