@@ -42,31 +42,25 @@ alias l='ls -aFG'
 alias ll='l -lh'
 
 # Git Commands
+alias gd='git diff'
+alias gll='git pull'
+alias gsh='git push'
 alias gbr='git branch'
 alias gcl='git clone'
 alias gco='git checkout'
-alias gdel='git add -u'
-alias gdf='clear; git diff -a -w'
+alias gdf='git diff -a -w'
 alias gfa='git fetch --all'
-alias gfull='clear; git status; git add .; git add -u; echo "****************"; git status; git ci -am'
-alias gf='git flow'
-alias glog='clear; git log'
+alias gfull='clear; git status; git add .; git add -u; echo "#################"; git status; git ci -am'
 alias glp='git log -p'
 alias gme='git merge'
 alias gmv='git mv'
-alias gpull='git pull'
-alias gpush='git push'
 alias grm='git rm'
 alias gst='git status'
 alias gtrim="sed -i '' -e 's/[[:space:]]*$//g'"
-alias gstack="gadd; gdel; git status; git redo;"
 alias gjam="git push -f"
 alias gitshipit="git add -A .; git commit -m 'SHIP IT'; git push -f"
-alias gd='git diff'
 alias gdc='git diff --cached'
 alias gap='git add -p'
-alias gl='git pull'
-alias gp='git push'
 
 # Gem Commands
 alias audit='gem list'
