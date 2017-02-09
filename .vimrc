@@ -14,18 +14,18 @@ Plugin 'gmarik/vundle'
 " general vim/commands
 Plugin 'tpope/vim-pathogen'
 Plugin 'tpope/vim-repeat'
-Plugin 'terryma/vim-multiple-cursors'
+" Plugin 'terryma/vim-multiple-cursors'
 
 " syntax
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'leshill/vim-json'
 Plugin 'tpope/vim-haml'
 Plugin 'tpope/vim-markdown'
-Plugin 'tdesikan/vim-tritium'
+" Plugin 'tdesikan/vim-tritium'
 Plugin 'slim-template/vim-slim'
 Plugin 'digitaltoad/vim-jade'
 Plugin 'wavded/vim-stylus'
-Plugin 'jelera/vim-javascript-syntax'
+Plugin 'pangloss/vim-javascript'
 Plugin 'fatih/vim-go'
 Plugin 'kylef/apiblueprint.vim'
 Plugin 'rust-lang/rust.vim'
@@ -37,9 +37,9 @@ Plugin 'vim-ruby/vim-ruby'
 Plugin 'rorymckinley/vim-rubyhash'
 
 " clojure
-Plugin 'tpope/vim-fireplace'
-Plugin 'tpope/vim-classpath'
-Plugin 'guns/vim-clojure-static'
+" Plugin 'tpope/vim-fireplace'
+" Plugin 'tpope/vim-classpath'
+" Plugin 'guns/vim-clojure-static'
 " filetype off
 
 " formatting
@@ -72,9 +72,8 @@ Plugin 'tpope/vim-fugitive'
 
 " rails
 Plugin 'tpope/vim-bundler'
-Plugin 'tpope/vim-cucumber'
-Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-rake'
+Plugin 'tpope/vim-rails'
 
 " tmux
 " Plugin 'benmills/vimux'
@@ -84,7 +83,7 @@ Plugin 'tpope/vim-rake'
 Plugin 'JamshedVesuna/vim-markdown-preview'
 
 " layout
-Plugin 'junegunn/goyo.vim'
+" Plugin 'junegunn/goyo.vim'
 
 " colorschemes
 Plugin 'altercation/vim-colors-solarized'
