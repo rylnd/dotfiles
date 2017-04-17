@@ -99,9 +99,9 @@ dreddd() {
 
 gh() {
   local remote="${1:-origin}"
-  local path="$(git config --get remote.${remote}.url | sed -E 's/git@|\.git//g' | sed 's/:/\//')"
+  local remote_path="$(git config --get remote.${remote}.url | sed -E 's|\.git||g' | sed -E 's|git@([^:]+):|https://\1/|g')"
 
-  open "https://$path"
+  open "$remote_path"
 }
 
 multifile () {
