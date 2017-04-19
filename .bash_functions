@@ -107,6 +107,11 @@ gh() {
   )"
 }
 
+setup_pr_fetching() {
+  local remote="${1:-origin}"
+  git config --add remote.${remote}.fetch '+refs/pull/*/head:refs/remotes/origin/pr/*'
+}
+
 multifile () {
   local filename=$(basename "$1")
   local ext="${filename##*.}"
