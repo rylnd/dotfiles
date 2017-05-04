@@ -151,14 +151,34 @@ comicize() {
     echo "processing $folder..."
     (
       cd "$folder"
-      for image in *.jpg; do
-        local image_number="${image%.*}"
-        cwebp "$image" -o "${image_number}.webp" -quiet
-      done
-
-      zip "${comic_name}.cbz" *.webp -q \
-      && rm *.webp \
-      && echo "generated ${comic_name}.cbz"
+      imgs_to_webps .
+      webps2cbz . "$comic_name"
     )
   done
+}
+
+imgs_to_webps() {
+  local folder="${1:-.}"
+
+  (
+    cd "$folder"
+    for image in *.jpg; do
+      local image_number="${image%.*}"
+      cwebp "$image" -o "${image_number}.webp" -m 6 -quiet
+    done
+  )
+
+  echo "generated .webps"
+}
+
+webps2cbz() {
+  local folder="${1:-.}"
+  local comic_name="$2"
+  [ -z "$comic_name" ] && echo "error: please provide a name for the .cbz file" && return 1
+
+  (
+    cd "$folder"
+    zip "${comic_name}.cbz" *.webp -q \
+    && echo "generated ${comic_name}.cbz"
+  )
 }
