@@ -142,7 +142,7 @@ gdiff() {
 
 comicize() {
   local series_name="$1"
-  [ -z "$series_name" ] && echo "error: please provide the series name" && exit 1
+  [ -z "$series_name" ] && echo "error: please provide the series name" && return 1
 
   for folder in */; do
     local comic_number="$(echo "$folder" | tr -dc '0-9')"
