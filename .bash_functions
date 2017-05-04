@@ -139,3 +139,26 @@ gdiff() {
   local common_parent="$(git merge-base ${branch} HEAD)"
   git diff "${common_parent}" HEAD
 }
+
+comicize() {
+  local series_name="$1"
+  [ -z "$series_name" ] && echo "error: please provide the series name" && exit 1
+
+  for folder in */; do
+    local comic_number="$(echo "$folder" | tr -dc '0-9')"
+    local comic_name="${series_name} #${comic_number}"
+
+    echo "processing $folder..."
+    (
+      cd "$folder"
+      for image in *.jpg; do
+        local image_number="${image%.*}"
+        cwebp "$image" -o "${image_number}.webp" -quiet
+      done
+
+      zip "${comic_name}.cbz" *.webp -q \
+      && rm *.webp \
+      && echo "generated ${comic_name}.cbz"
+    )
+  done
+}
