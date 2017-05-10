@@ -101,9 +101,8 @@ gh() {
   local remote="${1:-origin}"
   open "$(
     git config --get remote.${remote}.url |
-    sed 's|:|/|g' |
-    sed 's|git@|https://|g' |
-    sed 's|\.git||g'
+    sed -E 's|\.git||g' |
+    sed -E 's|git@([^:]+):|https://\1/|g'
   )"
 }
 
