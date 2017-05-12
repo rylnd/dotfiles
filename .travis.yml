@@ -1,2 +1,4 @@
 language: c
-script: shpec/shpec
+script: bin/shpec
+install:
+  - BINDIR="$PWD/bin" sh -c "`curl -L https://raw.github.com/rylnd/shpec/master/install.sh`"
