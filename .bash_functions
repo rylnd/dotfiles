@@ -139,7 +139,7 @@ gdiff() {
   git diff "${common_parent}" HEAD
 }
 
-comicize() {
+folders_to_cbzs() {
   local series_name="$1"
   [ -z "$series_name" ] && echo "error: please provide the series name" && return 1
 
@@ -150,13 +150,42 @@ comicize() {
     echo "processing $folder..."
     (
       cd "$folder"
-      imgs_to_webps .
-      webps2cbz . "$comic_name"
+      images_to_webps .
+      webps_to_cbz . "$comic_name"
     )
   done
 }
 
-imgs_to_webps() {
+repack_comics() {
+  for comic_file in *.cb?; do
+    local comic_name="${comic_file%.*}"
+
+    comic_to_images "$comic_file"
+    images_to_webps "$comic_name"
+    webps_to_cbz "$comic_name" "$comic_name"
+  done
+}
+
+comic_to_images() {
+  local comic_file="$1"
+  [ -z "$comic_file" ] && echo "error: please provide the comic filename" && return 1
+
+  local comic_name="${comic_file%.*}"
+
+  if ! echo "$comic_file" | grep -q 'cbr\|cbz'; then
+    echo "incorrect file type; please use a .cbr or .cbz"
+    return 1
+  fi
+
+  case "$comic_file" in
+    *cbr) unrar x "$comic_file" "${comic_name}/";;
+    *cbz) unzip "$comic_file" -d "${comic_name}/";;
+  esac
+
+  echo "extracted $comic_file images to ${comic_name}/"
+}
+
+images_to_webps() {
   local folder="${1:-.}"
 
   (
@@ -170,7 +199,7 @@ imgs_to_webps() {
   echo "generated .webps"
 }
 
-webps2cbz() {
+webps_to_cbz() {
   local folder="${1:-.}"
   local comic_name="$2"
   [ -z "$comic_name" ] && echo "error: please provide a name for the .cbz file" && return 1
