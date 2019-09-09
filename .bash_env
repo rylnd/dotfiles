@@ -24,7 +24,7 @@ export PSQL_EDITOR='vim -c"set syntax=sql"'
 export GOPATH="$HOME/go"
 export GOBIN="$GOPATH/bin"
 
-PATH="$HOME/bin:/usr/local/sbin:/usr/local/mysql/bin:/usr/local/bin:$PATH"
+export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
 
 # go
 PATH="$PATH:$GOPATH/bin"

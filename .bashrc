@@ -7,9 +7,12 @@ bind '"\en": history-search-forward'
 bind '"\C-w": backward-kill-word'
 stty -ixon
 
+[ ! -f "$HOME/.bash_env" ] || source "$HOME/.bash_env"
+[ ! -f "$HOME/.bash_env.local" ] || source "$HOME/.bash_env.local"
+
 [ ! -f "$HOME/.bash_aliases" ] || source "$HOME/.bash_aliases"
 [ ! -f "$HOME/.bash_functions" ] || source "$HOME/.bash_functions"
-[ ! -f "$(brew --prefix)/etc/bash_completion" ] || source "$(brew --prefix)/etc/bash_completion"
+[ ! -f "$(brew --prefix)/etc/profile.d/bash_completion.sh" ] || source "$(brew --prefix)/etc/profile.d/bash_completion.sh"
 [ ! -f "$HOME/.iterm2_shell_integration.bash" ] || source "$HOME/.iterm2_shell_integration.bash"
 
 # define the pair function
@@ -30,6 +33,3 @@ source "/usr/local/opt/nvm/nvm.sh"
 if [[ "$(docker-machine status base)" = "Running" ]]; then
   eval "$(docker-machine env base)"
 fi
-
-[ ! -f "$HOME/.bash_env" ] || source "$HOME/.bash_env"
-[ ! -f "$HOME/.bash_env.local" ] || source "$HOME/.bash_env.local"
