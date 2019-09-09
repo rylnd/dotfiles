@@ -25,13 +25,26 @@ export GOPATH="$HOME/go"
 export GOBIN="$GOPATH/bin"
 
 PATH="$HOME/bin:/usr/local/sbin:/usr/local/mysql/bin:/usr/local/bin:$PATH"
-PATH="$PATH:$HOME/.cabal/bin"
-PATH="$PATH:/usr/local/lib/node_modules"
-PATH="/usr/local/heroku/bin:$PATH"
-PATH="$HOME/.rbenv/bin:$PATH"
+
+# go
 PATH="$PATH:$GOPATH/bin"
-### Added by the Heroku Toolbelt
+# haskell
+PATH="$PATH:$HOME/.cabal/bin"
+# global node packages
+PATH="$PATH:/usr/local/lib/node_modules"
+# mysql
+PATH="/usr/local/mysql/bin:$PATH"
+# heroku CLI
 PATH="/usr/local/heroku/bin:$PATH"
+# python
+PATH="/usr/local/opt/python/libexec/bin:$PATH"
+PATH="$HOME/Library/Python/3.7/bin:$PATH"
+# rbenv
+PATH="$HOME/.rbenv/bin:$PATH"
+# homebrew
+PATH="/usr/local/bin:$PATH"
+# local overrides
+PATH="$HOME/bin:$PATH"
 
 export PATH
 
