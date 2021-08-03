@@ -35,28 +35,6 @@ prompt_func() {
   fi
 }
 
-turnips() {
-  args=(${@:-'*'})
-  args=("${args[@]/#/-o -iname }")
-  args="${args[@]/%/.feature}"
-  args=${args/#-o /}
-
-  eval "find ./spec/acceptance $args"
-}
-
-turnip() {
-  files=$(turnips $@ | tr '\n' ' ')
-  echo "rspec $files"
-  rspec $files
-}
-
-jsm() {
-  args=${@:-'.'}
-  command="$(find . -type f -name jasmine-node) --coffee --verbose"
-
-  $command $args
-}
-
 newer_sha() {
   alias log_list='git log --format=%H'
   local branch="$(git rev-parse --abbrev-ref HEAD)"
@@ -91,13 +69,7 @@ dcsh() {
   docker exec -it $container_id bash
 }
 
-dreddd() {
-  local port="${1:-3030}"
-
-  dredd ./apiary.apib "http://localhost:${port}"
-}
-
-gh() {
+gho() {
   local remote="${1:-origin}"
   open "$(
     git config --get remote.${remote}.url |
@@ -106,9 +78,27 @@ gh() {
   )"
 }
 
+runwhile() {
+  local cmd="$@"
+  $cmd
+  while [ $? -eq 0 ]; do
+    $cmd
+  done
+}
+
 setup_pr_fetching() {
   local remote="${1:-origin}"
   git config --add remote.${remote}.fetch '+refs/pull/*/head:refs/remotes/origin/pr/*'
+}
+
+kb-pr() {
+  local pr="${1}"
+  local remote="${2:-upstream}"
+
+  git config --get remote.${remote}.url |
+  sed -E 's|\.git||g' |
+  sed -E 's|git@([^:]+):|https://\1/|g' |
+  sed 's|$|/pull/'"${pr}|" | xargs open
 }
 
 multifile () {
@@ -209,4 +199,16 @@ webps_to_cbz() {
     zip "${comic_name}.cbz" *.webp -q \
     && echo "generated ${comic_name}.cbz"
   )
+}
+
+common() {
+  local out1="${TMPDIR}/common1"
+  local out2="${TMPDIR}/common2"
+  local path="${3:-.}"
+
+  grep -rl -e "$1" "${path}" | sort > "${out1}"
+  grep -rl -e "$2" "${path}" | sort > "${out2}"
+
+  comm -12 "${out1}" "${out2}"
+  rm "${out1}" "${out2}"
 }
