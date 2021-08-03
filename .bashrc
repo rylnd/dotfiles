@@ -15,10 +15,6 @@ stty -ixon
 [ ! -f "$(brew --prefix)/etc/profile.d/bash_completion.sh" ] || source "$(brew --prefix)/etc/profile.d/bash_completion.sh"
 [ ! -f "$HOME/.iterm2_shell_integration.bash" ] || source "$HOME/.iterm2_shell_integration.bash"
 
-# define the pair function
-source "$HOME/.pair"
-pair -q
-
 # define the sd function
 source '/Users/ryland/code/github/sd/sd'
 
@@ -28,8 +24,3 @@ eval "$(rbenv init -)"
 # nvm
 export NVM_DIR=~/.nvm
 source "/usr/local/opt/nvm/nvm.sh"
-
-# docker-machine
-if [[ "$(docker-machine status base)" = "Running" ]]; then
-  eval "$(docker-machine env base)"
-fi
