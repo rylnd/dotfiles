@@ -54,3 +54,5 @@
 	enabled = true
 [color "diff"]
 	whitespace = red reverse
+[pull]
+	rebase = true
