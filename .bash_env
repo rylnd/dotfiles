@@ -7,7 +7,6 @@ export HISTSIZE=20000
 export HISTCONTROL=erasedups
 export RSPEC=true
 export AUTOFEATURE=true
-export RUBYOPT=rubygems
 export EDITOR=vim
 export VISUAL=vim
 export GEMDOC=$(\gem environment gemdir)/doc
