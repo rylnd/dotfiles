@@ -11,7 +11,6 @@ alias myup='mysql.server start'
 alias mydown='mysql.server stop'
 alias apup='sudo apachectl start'
 alias apdown='sudo apachectl stop'
-alias repow='powify server stop && powify server start'
 alias serve='python -m SimpleHTTPServer'
 
 # command enhancements
@@ -33,62 +32,30 @@ alias so='source ~/.bash_profile'
 # Directory Navigation
 alias ...='cd ../..;l;'
 alias ..='cd ..;l;'
-alias ::::::='cd ../../../../../..;l;'
-alias :::::='cd ../../../../..;l;'
-alias ::::='cd ../../../..;l;'
-alias :::='cd ../../..;l;'
-alias ::='cd ../..;l;'
 alias l='ls -aFG'
 alias ll='l -lh'
 
 # Git Commands
 alias gd='git diff'
-alias gll='git pull'
-alias gsh='git push'
+alias gap='git add -p'
 alias gbr='git branch'
 alias gcl='git clone'
 alias gco='git checkout'
+alias gdc='git diff --cached'
 alias gdf='git diff -a -w'
 alias gfa='git fetch --all'
-alias gfull='clear; git status; git add .; git add -u; echo "#################"; git status; git ci -am'
+alias gll='git pull'
 alias glp='git log -p'
-alias gme='git merge'
-alias gmv='git mv'
-alias grm='git rm'
+alias gsh='git push'
 alias gst='git status'
+alias gfull='clear; git status; git add .; git add -u; echo "#################"; git status; git ci -am'
 alias gtrim="sed -i '' -e 's/[[:space:]]*$//g'"
-alias gjam="git push -f"
-alias gitshipit="git add -A .; git commit -m 'SHIP IT'; git push -f"
-alias gdc='git diff --cached'
-alias gap='git add -p'
 
-# Gem Commands
-alias audit='gem list'
-alias buy='gem install'
-alias polish='gem update'
-alias price='gem list -r'
-alias recut='gem edit -e mvim'
-alias sell='gem uninstall'
-alias shop='gem search -r'
-alias surplus='gem list | ack ","'
-
-# Rails 2.3
-alias cr='c; yn rake'
-alias deploy='cap_deploy.sh'
-alias rakedbtestkill='RAILS_ENV=test rake db:drop && RAILS_ENV=test rake db:create && rake db:test:prepare'
-alias rb='ruby'
-alias testenv='RAILS_ENV=test'
+# ruby commands
+alias be='bundle exec'
 
 # pair
 alias unpair='pair -u'
-
-# Bundle Commands
-alias be='bundle exec'
-alias becr='c; yn bundle exec rake'
-alias becree='c; yn_ree bundle exec rake'
-alias berake='bundle exec rake'
-alias bo='bundle open'
-alias mbo='BUNDLER_EDITOR=mvim bundle open'
 
 # Node commands
 alias npm-exec='PATH=$(npm bin):$PATH'
