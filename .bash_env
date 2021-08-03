@@ -24,6 +24,7 @@ export GOPATH="$HOME/go"
 export GOBIN="$GOPATH/bin"
 
 export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
+export BASH_SILENCE_DEPRECATION_WARNING=1
 
 # go
 PATH="$PATH:$GOPATH/bin"
