@@ -2,8 +2,8 @@ pair() {
   local name names email pair_name pair_email user usernames github_response status
 
   #### CONFIGURATION #####################################################
-  local PAIR_EMAIL_USERNAME='pair'
-  local PAIR_EMAIL_DOMAIN='adorable.io'
+  local PAIR_EMAIL_USERNAME='ryalnd'
+  local PAIR_EMAIL_DOMAIN='gmail.com'
 
   # People:
   local begriffs='Joe Nelson'
