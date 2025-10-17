@@ -70,7 +70,7 @@ pair() {
   for user in ${usernames[@]}; do
     if [[ -z "$(eval echo \$$user)" ]]; then # user cache MISS, check GitHub
       github_response=$(curl -is https://api.github.com/users/$user)
-      status=$(echo "$github_response" | head -n 1 | grep -o "200 OK")
+      status=$(echo "$github_response" | head -n 1 | grep -o "200 ")
       name=$(echo "$github_response" | grep -o '"name":.*"' | cut -d \" -f 4)
 
       if [[ -z "$status" ]]; then
